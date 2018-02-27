@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Development Tools</title>
+</head>
+<body>
+The player and maybe other NPC should be able to change their body structure, f.e. a human morphs to an anthro-wolf.
+
+# MorphState
+- For each possible body structure, the character keeps track of a morpstate ranging from 0 to 100%. F.e a morphstate for human, anthrowolf, feral wolf,...
+- Each time the character is exposed to a morphing source, f.e. drinking a werwolf-potion, that morphstate is increased.
+- If the morpstate reaches 100%, the character is morphed to this creature. After the morph all morphstates a set back to 0.
+- their might be notifications to the player at certain levels, f.e. 25,50, 75% telling him that he should be aware of the changes.
+
+TODO: It would be nice if the graphical representation could be changed (f.e. adding a tail at 50%) but thats out of reach???
+- the morph and the notification occurs when resting (blackscreen).
+
+TODO: Realtime morphing of the player model is to difficult?
+- MorphBooster is an effect that amplifies the change of morphstate. Might apply only to certain morphstates. 
+- MorphBlocker is an effect that supresses the change of morphstate. Might apply only to certain morphstates. 
+
+# Traits
+- A certain body structure might modify the base stats/Effect Multiplier of the character. F.e. a anthro-wolf can smell very good but has bad vision.
+- the body structure might also enable/disable the equipping of items, f.e. a large minotaur cannot wear human armor.  
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Development Tools</title>
+</head>
+<body>
+Imagine the following:
+- you write a quest milestone that should react whenever the player wears some sort of health potion in its inventory like:
+`if(player.inventory.HasItemOfClass(SmallHealthPotion)) {
+
+    player.SendNotification("You have an health potion in your inventory");
+}`
+- Now someone adds an item "BetterHealthPotion". You would have to change your code to:
+`if(player.inventory.HasItemOfClass(SmallHealthPotion) ||
+
+  player.inventory.HasItemOfClass(BetterHealthPotion)) {
+
+    player.SendNotification("You have an health potion in your inventory");
+}`
+- That would lead to a lot of coupling and maintenance
+
+To bypass this a Tags are used:
+- Each object can have 0 to n Tags assigned , f.e. "BetterHealthPotion" has Tag {Potion:RestoreHealth}
+- other objects can query the objects Tags or can filter lists of objects by Tags. Only the baseObject of the object is needed for this.
+- the code would now look like this:
+
+`if(player.inventory.HasItemWithTag(Potion:RestoreHealth)) {
+
+    player.SendNotification("You have an health potion in your inventory");
+}`
+# Tags
+- Game.GameObjectBase is the Parent class of all Items, perks, Quests and so on. It has functions to maintain the associated tags:
+- addTag
+- removeTag
+- removeAllTags
+- hasTag
+- hasAllTags
+- hasAnyTags
+- Child-Objects can modify their tags
+- Other objects can access the tags because they only need to refer to Game.GameObjectBase - no coupling to specifi objects
+- a Tag consists of a sector and form f.e. Species:Fox => Sector=Species & Form=Fox
+- Tags might relate to each other, f.e. Species:Fox and Species:Wolf relate to Species:Canine.
+
+# Tag-database
+
+- this database contains all Tags and their relation
+- the difficult thing is to define available Tags and their relation. A change here can cause a lot of changes in other classes !
+- TODO: Please see the Tag-List for a listing of all Tags
+
+</body>
+</html>

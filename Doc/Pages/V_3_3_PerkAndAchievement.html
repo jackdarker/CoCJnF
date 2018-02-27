@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Development Tools</title>
+</head>
+<body>
+# Perk Manager
+- has a database of all Perks
+- other game-functions request if a perk is unlocked (GetPerkLevel-Fct) and use this information for calculation
+
+# Perks
+- Perks are unlocked by fullfilling quest milestones
+- Perks might have multiple level f.e. "BowSkill Lv1", Levels might be upgraded or downgraded (downgrade should only be done if the upgrade can be auired again, f.e. equiping/unequiping a gadget)
+- Perks have a display flag
+   - Hidden: the perk is not displayed in the stat-screen
+   - RevealName: only the name is revealed
+   - Full: also the description is revealed
+- Perks can have negative effects (aka Quirks)
+
+# Achievements 
+- are like perks, but they are not used for calculation in the game
+- they can unlock general game features, f.e. a gallery
+
+# Support for Saving & Loading
+- only the ID and Level of an unlocked perk is stored in player data
+- state of Achievement is not stored in Playerdata but in AchievementState <<<TODO ????
+
+</body>
+</html>

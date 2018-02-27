@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Development Tools</title>
+</head>
+<body>
+- each creature has BaseStats
+- depending on theire equipment, perks, active effects those are recalculated to EffectiveStats
+- they have a collection of EffectMultiplier
+
+# EffectMultiplier
+- the multiplier is used to recalulate the poer of an effect f.e.
+
+   weakness to freeze 20% => scale freeze resistance by 80%
+
+   resistance to fire 100% => scale fire resistance by 200%
+- perks and equipment can modify the Multiplier or create it
+- the total multiplier is calculated by adding all specific multipliers; Each specific multiplier has a minimum/maximum threshold to limit the range of the possible total multiplier f.e. (notice that the order is descending multiplier)
+
+    fireproof breastplate    50%  min=0%  max=70%    => +50%
+
+    potion of fireresistance 20%  min=0%  max=65%    => +65%  ( not 70% because max)
+
+    fireproof helmet         15%  min=0%  max=70%    => +70%  ( not 80% because max) 
+
+    base multiplier          0%  min=-100%  max=100% => **+70% **                        
+
+
+</body>
+</html>
