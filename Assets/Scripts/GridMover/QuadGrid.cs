@@ -7,7 +7,7 @@ using GridMover;
 
 //represents a quadratic grid
 //Vector 3.x = horizontal ; Vector3.z=vertical
-class QuadGrid : MonoBehaviour,IMap
+class QuadGrid : IMap
 {
     private int Width;
     private int Height;

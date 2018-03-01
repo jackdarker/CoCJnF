@@ -177,10 +177,15 @@ public class QuadGridMover : MonoBehaviour,IGridMover
 
     bool IGridMover.GetPath(Vector3 from, Vector3 to, IUnit unit, out IList<ILocation> Path)
     {
-        GridMover.AStar _Pathfinder = new GridMover.AStar(m_Map, m_Map.GetNodeByPosition(from),
-            m_Map.GetNodeByPosition(to),unit);
-        bool _Return= _Pathfinder.findPath();
-        Path = _Pathfinder.path;
+        /*  GridMover.AStar _Pathfinder = new GridMover.AStar(m_Map, m_Map.GetNodeByPosition(from),
+              m_Map.GetNodeByPosition(to),unit);
+          bool _Return= _Pathfinder.findPath();*/
+        //Path = _Pathfinder.path;
+        bool _Return = true;
+        List<ILocation> _Path = new List<ILocation>();
+        _Path.Add(m_Map.GetNodeByPosition(from));
+        _Path.Add(m_Map.GetNodeByPosition(to));
+        Path = _Path;
         return _Return;
     }
 }

@@ -6,43 +6,51 @@
     <title>Development Tools</title>
 </head>
 <body>
-# Questmanager
-- has a database of all available quests
-- after each turn, it runs the UpdateState-Fct of all Quests to check if a Queststate changed
-- if a Queststate changed, it will collect the player notification (if there is any) and display it to the player one after another.
-
-# Quest
-- has a questID to be able to find it in the database
-- consists of minimum 2 milestones: start and end
-- has a unique name
-- has a Display-flag: 
-
-   * Hidden: the quest is completely hidden to the user (also milestones)
-   * All: the Name is revealed; milestone display depends on milestone
-
-- has a State-flag to store a quest related value: unsigned int32 <<<< or variant ??
-This should only be used if its necessary to store history information f.e. which milestone branch the player choosed.
-This value can then be checked by the milestone.
-
-# Milestone
-- has name and description
-- has a UpdateState-Fct that is called if milestone condition is fullfilled
-- the milestone might branch to different milestones depending on which condition is fullfilled (aka Quest tree), it might also point to itself for re-doable quests 
-- has a GetPlayerNotification-Fct to output the state of the fullfillment, f.e. "You successfully ollected 5 potions." or "You need to collect 5 potions."
-- has a Display-flag: 
-
-   * Hidden: the milestone name and condition requirement is displayed as "???" (if at least the quest is visible)
-   * RevealName: name and description are revealed, condition requirement not displayed
-   * All: all is displayed, also the condition requirements for the next milestone
-
-- has a State-flag:
-
-   * Running: Condition not fullfilled
-   * Done: milestone completed
-- if the milestone is completed (once set to Done), it might unlock a perk or do other things
-
-# Save-Load-support
-- Only the Quest-flags and current Milestone-flags are stored
-
+<h2>Questmanager</h2>
+<ul>
+<li>has a database of all available quests</li>
+<li>after each turn, it runs the UpdateState-Fct of all Quests to check if a Queststate changed</li>
+<li>if a Queststate changed, it will collect the player notification (if there is any) and display it to the player one after another</li>
+</ul>
+<h2>Quest</h2>
+<ul>
+<li>has a questID to be able to find it in the database</li>
+<li>consists of minimum 2 milestones: start and end</li>
+<li>has a unique name</li>
+<li>has a Display-flag:
+<ul>
+<li>Hidden: the quest is completely hidden to the user (also milestones)</li>
+<li>All: the Name is revealed; milestone display depends on milestone</li>
+</ul>
+</li>
+<li>has a State-flag to store a quest related value: unsigned int32 &lt;&lt;&lt;&lt; or variant ?? This should only be used if its necessary to store history information f.e. which milestone branch the player choosed.<br />This value can then be checked by the milestone.</li>
+</ul>
+<h2>Milestone</h2>
+<ul>
+<li>has name and description</li>
+<li>has a UpdateState-Fct that is called if milestone condition is fullfilled</li>
+<li>the milestone might branch to different milestones depending on which condition is fullfilled (aka Quest tree), it might also point to itself for re-doable quests </li>
+<li>has a GetPlayerNotification-Fct to output the state of the fullfillment, f.e. "You successfully ollected 5 potions." or "You need to collect 5 potions."</li>
+<li>has a Display-flag:
+<ul>
+<li>Hidden: the milestone name and condition requirement is displayed as "???" (if at least the quest is visible)</li>
+<li>RevealName: name and description are revealed, condition requirement not displayed</li>
+<li>All: all is displayed, also the condition requirements for the next milestone</li>
+</ul>
+</li>
+<li>has a State-flag:
+<ul>
+<li> Running: Condition not fullfilled</li>
+<li> Done: milestone completed</li>
+</ul>
+</li>
+<li>if the milestone is completed (once set to Done), it might unlock a perk or do other things</li>
+</ul>
+<h2>Save-Load-support</h2>
+<ul>
+<li>
+<p>Only the Quest-flags and current Milestone-flags are stored</p>
+</li>
+</ul>
 </body>
 </html>
