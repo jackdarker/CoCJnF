@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Overworld View</title>
+</head>
+<body>
+    <p>This view is used when exploring/scavenging.</p>
+    <p>Elements on this view are:</p>
+    <ul>
+        <li>one-screen-size gameview</li>
+        <li>the number of waves left</li>
+        <li>player-stats</li>
+        <li>Action-menu</li>
+        <li>enemy-stats</li>
+        <li>After a wave is done, blackscreen to next wave or final result-page.</li>
+    </ul>
+    <h2>Game-View</h2>
+    <ul>
+        <li>player on left side,enemys right</li>
+        <li>at players turn, on Fire1 the action menu opens up</li>
+    </ul>
+    <h2> Action-Menu</h2>
+    <ul>
+        <li>a list of buttons for selecting actions</li>
+        <li>text-box to show info about the action</li>
+        <li>possible actions depend on: equipment, effects, perks,...</li>
+        <li>has a back button to close the list</li>
+        <li>actions that are in cooldown are disabled and their cooldown time is shown</li>
+        <li>actions that require to much action-points or are disabled by effects, are disabled</li>
+        <li>the action is executed immedialty</li>
+    </ul>
+    <p>Possible actions:</p>
+    <h3>Repeat last move</h3>
+    <ul>
+        <li>shortcut for repeating the last action</li>
+    </ul>
+    <h3>Attack</h3>
+    <ul>
+        <li>shows a list of all possible actions valid for attack</li>
+    </ul>
+    <h3>Defend</h3>
+    <ul>
+        <li>shows a list of all possible actions valid for defend</li>
+    </ul>
+    <h3>Sense</h3>
+    <ul>
+        <li>executes a Sense-Move that shows enemy-stats</li>
+    </ul>
+    <h3>Inventory</h3>
+    <ul>
+        <li>shows the inventory where items can be used</li>
+    </ul>
+    <h3>Info</h3>
+    <ul>
+        <li>shows detailed stats including effects for the selected player/enemy</li>
+    </ul>
+    <h3>End turn</h3>
+    <ul>
+        <li>do nothing to recover fatigue and switch turn</li>
+    </ul>
+    <h3>Flee</h3>
+    <ul>
+        <li>try emergency escape to camp of player choice</li>
+        <li>on success player will loose collected money and some collected items</li>
+    </ul>
+    <h2>Player Stats</h2>
+    <ul>
+        <li>bargraph for armor,HP, Fatigue , AP</li>
+        <li>icons for effects</li>
+    </ul>
+    <h2>Enemy Stats</h2>
+    <ul>
+        <li>bargraph for armor,HP, Fatigue , AP</li>
+        <li>icons for effects</li>
+    </ul>
+    <h2>Detailed Enemy Stats</h2>
+    <ul>
+        <li>more details are revealed with the Sense-Move</li>
+        <li>species, attack&amp;defend-moves, effect-details, weakness/strong</li>
+    </ul>
+    <h2>Waves</h2>
+    <ul>
+        <li>how many waves are left</li>
+    </ul>
+
+</body>
+</html>

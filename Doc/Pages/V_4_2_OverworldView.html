@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Overworld View</title>
+</head>
+<body>
+    <p>This view represents a large dungeon or overworld where the player move from one tile to the next.</p>
+    <p>Elements on this view are:</p>
+    <ul>
+        <li>a clock showing the actual daytime</li>
+        <li>the map-grid itslef</li>
+        <li>a button menue for selecting actions</li>
+        <li>additional text-box showing info about the selected tile</li>
+    </ul>
+    <h2>Map-Grid</h2>
+    <ul>
+        <li>quad-grid in top down view</li>
+        <li>Navigation only N/S/W/E</li>
+        <li>the actual player location is indicated with a player avatar</li>
+        <li>arrows are used to move the selection marker</li>
+        <li>when Fire-Key is pressed the button menu opens up and lists the possible actions for this tile</li>
+    </ul>
+    <p> </p>
+    <p>Additional signs are used for special tiles:</p>
+    <h4>Lock</h4>
+    <ul>
+        <li>indicates that the player cannot move on this tile until requirements are satisfied, f.e."Blue key in inventory"</li>
+        <li>the requirement is shown in the info box</li>
+        <li>the select marker can move on this tile and beyond</li>
+    </ul>
+    <h3>Exclamation mark</h3>
+    <ul>
+        <li>indicates a tile with important content f.e. quest-target, boss</li>
+        <li>show some hint in the info box</li>
+    </ul>
+    <h3>Door</h3>
+    <ul>
+        <li>indicates an entry/exit of dungeon</li>
+    </ul>
+    <h3>Camp</h3>
+    <ul>
+        <li>indicates a save location, f.e. player campsite, village</li>
+        <li>similiar to door</li>
+    </ul>
+    <h3>hidden</h3>
+    <ul>
+        <li>tiles might be hidden until the player moves onto them or they are revealed otherwise, f.e. by buying a map</li>
+        <li>no other indicators are shown for those tiles</li>
+    </ul>
+    <p> </p>
+    <h2>Action-Menu</h2>
+    <ul>
+        <li>a list of buttons for selecting actions depending on the selcted tile</li>
+        <li>has a back button to close the list</li>
+    </ul>
+    <p>Possible actions:</p>
+    <h3>Move here / Explore /Visit</h3>
+    <ul>
+        <li>if the select marker is right next to a tile, the player try to move on this tile executing a explore-Move</li>
+        <li>if the target tile is a door, the player will enter/exit the dungeon</li>
+        <li>if the select marker is on the player tile and not camp, the player will do exploration/scavaging</li>
+        <li>if the select marker is on the player tile and camp, the camp view will be opened</li>
+        <li></li>
+    </ul>
+    <h3>Inventory</h3>
+    <ul>
+        <li>shows the inventory where items can be used</li>
+    </ul>
+    <h3>Rest</h3>
+    <ul>
+        <li>sleep until morning</li>
+        <li>only at not camp tiles</li>
+    </ul>
+    <h3>Flee</h3>
+    <ul>
+        <li>emergency escape to camp of player choice</li>
+    </ul>
+    <h2>Info-Box</h2>
+    <ul>
+        <li>shows information of the tile: Name</li>
+        <li>shows other info (see above)</li>
+        <li>shows possible cchances of encounters, f.e. "30% occurence of 2 or less weak enemys; 10% chance of finding ingridients"</li>
+    </ul>
+    <p> </p>
+    <h2>Clock</h2>
+    <ul>
+        <li>24h format or day-night cycle?</li>
+        <li>updated with each turn</li>
+    </ul>
+
+</body>
+</html>

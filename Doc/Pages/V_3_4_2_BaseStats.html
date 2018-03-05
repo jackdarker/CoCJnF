@@ -3,17 +3,83 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>Development Tools</title>
+    <title>Base Stats</title>
 </head>
 <body>
-Each Player/NPC/Monster has the following Stats:
-
-- Hitpoints
-- Fatigue
-
-Player has additional stats:
-- Hunger 
-- MorphState
+<h2>BaseAttributes</h2>
+<p>Each Player/NPC/Monster has the following Stats</p>
+<ul>
+<li>Agility</li>
+<li>Perception</li>
+<li>Stamina</li>
+<li>Strength</li>
+<li>Intelligence</li>
+<li>Willpower ??</li>
+<li>Charisma</li>
+<li>Corruption&nbsp; ???</li>
+<li>Luck ??</li>
+</ul>
+<p>The attributes depends on initial character generation, species-traits and effects caused by equipment, potions, perks.</p>
+<p>Actions should rely one a combination of Attributes, f.e. climbing might depend on Agility &amp; Stamina scavenging depends on Perception &amp; Agility....</p>
+<h2>DerivedStats</h2>
+<p>Depending on Basevalues, the follwoing Stats for combat are calculated</p>
+<ul>
+<li>Hitpoints (HP)<br />
+<ul>
+<li>defines your overall health</li>
+<li>= Stamina+Strength</li>
+</ul>
+</li>
+<li>Actionpoints (AP)
+<ul>
+<li>how many actions you can do in one round</li>
+<li>=Min(Agility , Strength)</li>
+</ul>
+</li>
+<li>Damage output (for different damage types??)
+<ul>
+<li>your bare handed damage</li>
+<li>=Strength+Intelligence</li>
+</ul>
+</li>
+<li>Damage resistance (for different damage types??)
+<ul>
+<li>your natural armor</li>
+<li>=Stamina+Willpower</li>
+</ul>
+</li>
+<li>Fatigue (FP)
+<ul>
+<li>defines your energy reserves</li>
+<li>=Avg(Stamina,Agility,Willpower)</li>
+</ul>
+</li>
+<li>Fatigue recovery (FP)
+<ul>
+<li>how much fatigue you recover in each turn</li>
+<li>=</li>
+</ul>
+</li>
+<li>Health recovery
+<ul>
+<li>how much health you recover in each turn</li>
+<li>=</li>
+</ul>
+</li>
+<li>Hunger rate (Player only)<br />
+<ul>
+<li>how much you getting hungrier over time</li>
+<li>=Max(Strength,Stamina)</li>
+</ul>
+</li>
+</ul>
+<p>Stats can be modified by Effects of Perks, Spellsm...</p>
+<h2>Player specific Stats</h2>
+<p>Player has additional stats</p>
+<ul>
+<li>Hunger</li>
+<li>MorphState</li>
+</ul>
 
 </body>
 </html>
