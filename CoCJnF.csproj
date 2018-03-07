@@ -350,14 +350,12 @@
     <Compile Include="Assets\Scripts\Animation\TransformScaleTweener.cs" />
     <Compile Include="Assets\Scripts\Animation\Tweener.cs" />
     <Compile Include="Assets\Scripts\Animation\Vector3Tweener.cs" />
-    <Compile Include="Assets\Scripts\ApplicationManager.cs" />
     <Compile Include="Assets\Scripts\AudioHelper.cs" />
     <Compile Include="Assets\Scripts\BarManager.cs" />
-    <Compile Include="Assets\Scripts\Battle\Battle.cs" />
-    <Compile Include="Assets\Scripts\Battle\CombatScript.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\ChangeColor.cs" />
     <Compile Include="Assets\Scripts\ClickToMoveController.cs" />
+    <Compile Include="Assets\Scripts\Core\ApplicationManager.cs" />
     <Compile Include="Assets\Scripts\Core\Controller\BaseViewController.cs" />
     <Compile Include="Assets\Scripts\Core\Controller\CombatantView.cs" />
     <Compile Include="Assets\Scripts\Core\Controller\CombatViewController.cs" />
@@ -372,7 +370,9 @@
     <Compile Include="Assets\Scripts\Core\DataController.cs" />
     <Compile Include="Assets\Scripts\Core\FlowController.cs" />
     <Compile Include="Assets\Scripts\Core\GameFactory.cs" />
+    <Compile Include="Assets\Scripts\Core\IntroState.cs" />
     <Compile Include="Assets\Scripts\Core\PlayerFactory.cs" />
+    <Compile Include="Assets\Scripts\Core\SceneController.cs" />
     <Compile Include="Assets\Scripts\Core\SimpleObjectPool.cs" />
     <Compile Include="Assets\Scripts\Core\SQLite.cs" />
     <Compile Include="Assets\Scripts\Core\StateMachine.cs" />
@@ -394,6 +394,8 @@
     <Compile Include="Assets\Scripts\GridMover\QuadGrid.cs" />
     <Compile Include="Assets\Scripts\GridMover\QuadGridMover.cs" />
     <Compile Include="Assets\Scripts\GridMover\SelectGridMover.cs" />
+    <Compile Include="Assets\Scripts\Model\Battle.cs" />
+    <Compile Include="Assets\Scripts\Model\CombatScript.cs" />
     <Compile Include="Assets\Scripts\Model\Game.cs" />
     <Compile Include="Assets\Scripts\Model\Player.cs" />
     <Compile Include="Assets\Scripts\MusicHelper.cs" />
@@ -423,6 +425,7 @@
   <ItemGroup>
     <None Include="Assets\AllAssets\readme.txt" />
     <None Include="Assets\Fonts\Jupiter\LICENSE.txt" />
+    <None Include="Assets\Fonts\OFL.txt" />
     <None Include="Assets\JMO Assets\!JMO Assets Readme.txt" />
     <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_Lit.shader" />
     <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_Plain.shader" />

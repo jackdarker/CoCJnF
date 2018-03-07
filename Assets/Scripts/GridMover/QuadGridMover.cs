@@ -72,7 +72,7 @@ public class QuadGridMover : MonoBehaviour,IGridMover
         inverseMoveTime = 1f / moveTime;
     }
     //Co-routine for moving units from one space to next, takes a parameter end to specify where to move to.
-    protected IEnumerator SmoothMovement(Vector3 end, Rigidbody rbody)
+    protected IEnumerator SmoothMovement(Vector3 end, Rigidbody rbody, Action OnFinish)
     {
         //Calculate the remaining distance to move based on the square magnitude of the difference between current position and end parameter. 
         //Square magnitude is used instead of magnitude because it's computationally cheaper.
@@ -93,6 +93,8 @@ public class QuadGridMover : MonoBehaviour,IGridMover
             //Return and loop until sqrRemainingDistance is close enough to zero to end the function
             yield return null;
         }
+        if (OnFinish != null)
+            OnFinish();
     }
     //Move returns true if it is able to move and false if not. 
     //Move takes parameters for x direction, y direction and a RaycastHit2D to check collision.
@@ -129,7 +131,7 @@ public class QuadGridMover : MonoBehaviour,IGridMover
     }*/
     //The virtual keyword means AttemptMove can be overridden by inheriting classes using the override keyword.
     //AttemptMove takes a generic parameter T to specify the type of component we expect our unit to interact with if blocked (Player for Enemies, Wall for Player).
-    public void AttemptMove(Vector3 dir,QuadGridMover.Unit unit) {
+    public void AttemptMove(Vector3 dir,QuadGridMover.Unit unit, Action OnFinish) {
         //Hit will store whatever our linecast hits when Move is called.
         //RaycastHit hit;
         //Store start position to move from, based on objects current transform position.
@@ -146,7 +148,7 @@ public class QuadGridMover : MonoBehaviour,IGridMover
         else
         {
             unit.SelectPosition = Path[Path.Count - 1].GetPosition(); 
-            StartCoroutine(SmoothMovement(unit.SelectPosition,unit.Body)); 
+            StartCoroutine(SmoothMovement(unit.SelectPosition,unit.Body, OnFinish)); 
             //Todo coroutine should process path to follow tril if more than 1 node
         }
         return;
@@ -172,7 +174,7 @@ public class QuadGridMover : MonoBehaviour,IGridMover
     private QuadGrid m_Map;
     void IGridMover.SetMap(IMap Map)
     {
-        this.m_Map = new QuadGrid(20, 20);  //Todo how to load map
+        this.m_Map = new QuadGrid(100, 100);  //Todo how to load map
     }
 
     bool IGridMover.GetPath(Vector3 from, Vector3 to, IUnit unit, out IList<ILocation> Path)

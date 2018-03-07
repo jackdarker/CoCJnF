@@ -19,14 +19,15 @@ public class DataController
     #region Public
     public void Load(Action complete)
     {
-        pokemonDatabase = new DatabaseController("Pokemon.db");
-        pokemonDatabase.Load(SQLiteOpenFlags.ReadOnly, delegate (DatabaseController obj) {
+        pokemonDatabase = new DatabaseController("GameDat.db");
+        pokemonDatabase.Load(SQLiteOpenFlags.ReadOnly, delegate (DatabaseController obj) //Todo build db 
+        {
             if (complete != null)
                 complete();
         });
     }
 
-    public void SaveGame()
+    public void SaveGame()  //Todo use this for common settings between games, f.e resolution
     {
         var json = JsonUtility.ToJson(game);
         PlayerPrefs.SetString(saveDataKey, json);

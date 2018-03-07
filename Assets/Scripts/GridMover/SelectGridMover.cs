@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using GridMover;
 using UnityEngine;
@@ -45,6 +46,7 @@ public class SelectGridMover : MonoBehaviour
         }
 
     }
+    public Action OnFinish;
     public Rigidbody MarkerRigidBody;  //this is the selector avatar
     public Rigidbody PlayerRigidBody;  //this is the player avatar
     Animator m_Animator;
@@ -57,8 +59,11 @@ public class SelectGridMover : MonoBehaviour
     {
         m_PlayerUnit = new PlayerMarker();
         //PlayerRigidBody = this.GetComponent<Rigidbody>();
-        m_PlayerUnit.Body = PlayerRigidBody;  
-        
+        m_PlayerUnit.Body = PlayerRigidBody;
+
+        OnFinish = delegate {
+           //TODO stateMachine.ChangeState(PlayerCountState);
+        };
         m_SelectUnit = new SelectMarker();
         m_SelectUnit.Body = MarkerRigidBody;
         m_PlayerUnit.SelectPosition = m_SelectUnit.SelectPosition= transform.position;
@@ -85,8 +90,8 @@ public class SelectGridMover : MonoBehaviour
         if (horizontal != 0 || vertical != 0)
         {
             //Pass in horizontal and vertical as parameters to specify the direction to move Player in.
-            m_Mover.AttemptMove(new Vector3(horizontal, 0, vertical), m_SelectUnit );
-            m_Mover.AttemptMove(new Vector3(horizontal, 0, vertical), m_PlayerUnit);
+            m_Mover.AttemptMove(new Vector3(horizontal, 0, vertical), m_SelectUnit, OnFinish );
+            m_Mover.AttemptMove(new Vector3(horizontal, 0, vertical), m_PlayerUnit, OnFinish);
         }
         //user ack the new position - move ahead
         if (Input.GetButtonDown("Fire1") && m_PlayerUnit.SelectPosition!=m_PlayerUnit.NewPosition) {

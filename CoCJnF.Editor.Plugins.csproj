@@ -317,6 +317,7 @@
   <ItemGroup>
     <None Include="Assets\AllAssets\readme.txt" />
     <None Include="Assets\Fonts\Jupiter\LICENSE.txt" />
+    <None Include="Assets\Fonts\OFL.txt" />
     <None Include="Assets\JMO Assets\!JMO Assets Readme.txt" />
     <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_Lit.shader" />
     <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_Plain.shader" />
