@@ -7,5 +7,41 @@
 </head>
 <body>
 See subpages
+
+
+    <hr />
+    <div class="mermaid">
+        graph TB
+
+subgraph splashscene
+        A(SplashScreen)
+end
+subgraph mainmenuscene
+A-->MainMenu
+MainMenu-->|New|NewGame
+MainMenu-->|Load|Load
+NewGame-->|Back|MainMenu
+Load-->|Back|MainMenu
+end
+subgraph test
+LoadOverworldScene-->F[Statemachine]
+end
+MainMenu-->|Continue|LoadOverworldScene	
+	Load -->LoadOverworldScene
+	F-->|MainMenu|MainMenu
+MainMenu-->|Quit|Quit
+        
+	
+
+	
+	
+        click A "index.html#link-clicked" "link test"
+        click B testClick "click test"
+    </div>
+
+
+    <hr />
+    <script src="../js/mermaid.min.js"></script>
+    <script>mermaid.initialize({ startOnLoad: true });</script>
 </body>
 </html>
