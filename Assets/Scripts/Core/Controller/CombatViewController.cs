@@ -23,9 +23,9 @@ public class CombatViewController : BaseViewController
 
     public void Display()
     {
-        foreach (Battle.Combatant combatant in battle.combatants)
+        foreach (BaseMonster combatant in battle.GetWave().combatants)
         {
-            GetView(combatant).Display(combatant);
+            GetView(BaseMonster).Display(BaseMonster);
         }
     }
 
@@ -44,17 +44,17 @@ public class CombatViewController : BaseViewController
 
     IEnumerator ShowResultProcess()
     {
-        var combatantView = GetView(battle.combatants[1]);
-        StartCoroutine(combatantView.UpdateHitPointsProcess(battle.lastDamage));
+        var combatantView = GetView(battle.GetWave().m_Actor);
+        //??StartCoroutine(combatantView.UpdateHitPointsProcess(battle.lastDamage));
 
-        combatantView = GetView(battle.combatants[0]);
+        combatantView = GetView(battle.GetWave().combatants[0]);
         yield return StartCoroutine(combatantView.UpdateEnergyProcess());
     }
 
     IEnumerator ShowAttackProcess()
     {
-        var move = battle.move;
-        var combatant = battle.combatants[0];
+        var move = battle.GetWave().move;
+        var combatant = battle.GetWave().combatants[0];
         moveCallout.text = move.name;
         //battleCrySource.clip = battle.combatants[0].CurrentPokemon.GetBattleCry();
         //battleCrySource.Play();
@@ -70,8 +70,8 @@ public class CombatViewController : BaseViewController
         moveCallout.text = "";
     }
 
-    CombatantView GetView(Battle.Combatant combatant)
+    CombatantView GetView(BaseMonster combatant)
     {
-        return combatant.m_controlledByPlayer ? playerCombatant : computerCombatant;
+        return combatant.IsControlledByPlayer() ? playerCombatant : computerCombatant;
     }
 }

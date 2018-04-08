@@ -53,26 +53,35 @@ public class SelectGridMover : MonoBehaviour
     public QuadGridMover m_Mover;
     SelectMarker m_SelectUnit; //this marks the actual selected node
     PlayerMarker m_PlayerUnit;  // this marks the node where the player will move to on confirm
-    
+    public bool isPlayerSelected { get { return m_PlayerUnit.SelectPosition == m_PlayerUnit.NewPosition; } }
+
     // Use this for initialization
     void Start()
     {
         m_PlayerUnit = new PlayerMarker();
         //PlayerRigidBody = this.GetComponent<Rigidbody>();
         m_PlayerUnit.Body = PlayerRigidBody;
-
+        
         OnFinish = delegate {
            //TODO stateMachine.ChangeState(PlayerCountState);
         };
         m_SelectUnit = new SelectMarker();
         m_SelectUnit.Body = MarkerRigidBody;
-        m_PlayerUnit.SelectPosition = m_SelectUnit.SelectPosition= transform.position;
+        m_PlayerUnit.SelectPosition= m_PlayerUnit.NewPosition = 
+            m_SelectUnit.SelectPosition = m_SelectUnit.NewPosition= transform.position;
         ((IGridMover)m_Mover).SetMap(null);
 
     }
-
+    
+    public void AttemptMove(Vector3 direction) {
+        //Pass in horizontal and vertical as parameters to specify the direction to move Player in.
+        m_Mover.AttemptMove(direction, m_SelectUnit, OnFinish);
+        m_Mover.AttemptMove(direction, m_PlayerUnit, OnFinish);
+    }
+    private bool m_directControl = false;   //controlled by statemachine?
     void Update()
     {
+        if (!m_directControl) return;
         int horizontal = 0;     //Used to store the horizontal move direction.
         int vertical = 0;       //Used to store the vertical move direction.
                                 //Get input from the input manager, round it to an integer and store in horizontal to set x axis move direction

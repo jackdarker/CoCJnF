@@ -4,7 +4,7 @@ using UnityEngine;
 
 public partial class FlowController : MonoBehaviour
 {
-
+    /*
     StateMachine.State NewGameState
     {
         get
@@ -26,12 +26,12 @@ public partial class FlowController : MonoBehaviour
        /* playerConfigureViewController.didAbort = delegate {   //Todo back to mainmenu
             stateMachine.ChangeState(PlayerCountState);
         };*/
-    }
+   /* }
 
     void OnExitPlayerConfigureState()
     {
         playerConfigureViewController.didComplete = null;
         playerConfigureViewController.didAbort = null;
         playerConfigureViewController.gameObject.SetActive(false);
-    }
+    }*/
 }

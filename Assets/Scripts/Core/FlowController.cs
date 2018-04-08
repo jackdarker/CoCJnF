@@ -61,7 +61,7 @@ public partial class FlowController : MonoBehaviour
     {
         dataController = DataController.instance;
         dataController.Load(delegate {
-            stateMachine.ChangeState(IntroState);
+       //     stateMachine.ChangeState(IntroState);
         });
     }
 }

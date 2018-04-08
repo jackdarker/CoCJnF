@@ -11,9 +11,9 @@ public class CombatantView : MonoBehaviour
     public RectTransform hitPoints;
     public RectTransform energy;
     public Image avatarImage;
-    Battle.Combatant combatant;
+    Wave.Combatant combatant;
 
-    public void Display(Battle.Combatant combatant)
+    public void Display(Wave.Combatant combatant)
     {
         this.combatant = combatant;
         nameLabel.text = "combatant.CurrentPokemon.Name";

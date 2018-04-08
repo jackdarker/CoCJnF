@@ -3,7 +3,7 @@
 
 public partial class FlowController : MonoBehaviour
 {
-    StateMachine.State IntroState
+    /*StateMachine.State IntroState
     {
         get
         {
@@ -28,5 +28,5 @@ public partial class FlowController : MonoBehaviour
     {
         introMenuViewController.didFinish = null;
         introMenuViewController.gameObject.SetActive(false);
-    }
+    }*/
 }

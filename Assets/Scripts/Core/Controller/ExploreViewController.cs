@@ -7,12 +7,21 @@ using System;
 public class ExploreViewController : BaseViewController
 {
 
+    [SerializeField] ButtonList leftPanel;
     public enum Exits
     {
         Move,
         Inventory
     }
-
+    Canvas canvas;
+    void Start()
+    {
+        canvas = GetComponentInChildren<Canvas>();
+    }
+    public void Show()
+    {
+        canvas.gameObject.SetActive(true);
+    }
     public Action<Exits> didFinish;
 
    // [SerializeField] Button loadButton;

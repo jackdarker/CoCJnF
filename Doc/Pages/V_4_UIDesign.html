@@ -3,42 +3,59 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>Brewing, Smithing</title>
+    <title>UI</title>
 </head>
 <body>
-See subpages
+    This is a diagram of the basic scenes and states.
 
 
     <hr />
+    <!-- see https://mermaidjs.github.io/flowchart.html-->
     <div class="mermaid">
         graph TB
 
-subgraph splashscene
+        subgraph splashscene
         A(SplashScreen)
-end
-subgraph mainmenuscene
-A-->MainMenu
-MainMenu-->|New|NewGame
-MainMenu-->|Load|Load
-NewGame-->|Back|MainMenu
-Load-->|Back|MainMenu
-end
-subgraph test
-LoadOverworldScene-->F[Statemachine]
-end
-MainMenu-->|Continue|LoadOverworldScene	
-	Load -->LoadOverworldScene
-	F-->|MainMenu|MainMenu
-MainMenu-->|Quit|Quit
-        
-	
-
-	
-	
+        end
+        subgraph mainmenuscene
+        A-->MainMenu
+        MainMenu-->|New|NewGame
+        MainMenu-->|Load|LoadGame
+        NewGame-->|Back|MainMenu
+        LoadGame-->|Back|MainMenu
+        end
+        subgraph overworldscene
+        LoadOverworldScene-->ExploreStateMachine
+        end
+        subgraph explorescene
+        ExploreStateMachine-->|Event|BattleStateMachine
+        BattleStateMachine-->LoadOverworldScene
+        end
+        MainMenu-->|Continue|LoadOverworldScene
+        LoadGame -->LoadOverworldScene
+        ExploreStateMachine-->|MainMenu|MainMenu
+        MainMenu-->|Quit|Quit
         click A "index.html#link-clicked" "link test"
         click B testClick "click test"
     </div>
+    <hr />
+    <div class="mermaid">
+        graph TB
+        ExploreStateMachine-->LoadBattleScene
+        subgraph BattleStateMachine
+        LoadBattleScene-->NextWave
+        NextWave-->|Done|Return
+        NextWave-->|NotDone|PreWave
+        PreTurn-->PlayersTurn
+        PlayersTurn-->EnemysTurn
+        EnemysTurn-->PreTurn
+        PreTurn-->|Victory|Victory
+        PreTurn-->|Defeat|Defeat
+        Victory-->NextWave
+        Defeat-->Return
+        end
 
+    </div>
 
     <hr />
     <script src="../js/mermaid.min.js"></script>

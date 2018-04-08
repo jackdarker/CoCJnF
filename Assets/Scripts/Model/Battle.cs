@@ -3,15 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using ECS;
 using System;
-public class Battle //Todo holds the data of the current battle
+public class Battle //Todo holds the data of the BattleWaves
 {
-    public class Combatant  //Todo collection of the creatures in battle for one player
-    {
-        public bool m_controlledByPlayer;
+    
+    public class BattleGenerator {
+        //generates a number of wave depending on location and difficulty
+        public static Battle RandomizeBattle() {
+            return new Battle(); //todo
+        }
     }
-    public List<Combatant> combatants = new List<Combatant>();
-    public Move move;
-    public int lastDamage;
-    public Combatant attacker { get { return combatants[0]; } }
-    public Combatant defender { get { return combatants[1]; } }
+
+    public Battle(){
+        CurrWave = 0;
+    }
+    private int CurrWave;
+    private Wave[] m_Waves;
+    public Wave GetWave() {
+        if(CurrWave> m_Waves.Length) return null;
+        return m_Waves[CurrWave];
+    }
+    public void WaveDone()
+    {
+        CurrWave++;
+    }
 }
