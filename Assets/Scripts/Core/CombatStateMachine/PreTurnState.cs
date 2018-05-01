@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Evaluates if the Battle is over 
+///Called at start of wave/ after all combatants acted
+//calculate turn order
 public class PreTurnState : StateMachine.State {
 
     CombatStatemachine m_Owner;

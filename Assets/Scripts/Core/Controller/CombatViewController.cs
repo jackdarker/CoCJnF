@@ -25,7 +25,7 @@ public class CombatViewController : BaseViewController
     {
         foreach (BaseMonster combatant in battle.GetWave().combatants)
         {
-            GetView(BaseMonster).Display(BaseMonster);
+            GetView(combatant).Display(combatant);
         }
     }
 

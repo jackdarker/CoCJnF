@@ -10,11 +10,13 @@ public class CombatStatemachine : StateMachine
     public Image m_BlackScreen;
     public ButtonList m_SelButtons;
     public InfoBox m_Info;
+    public Text m_Message;
 
     public Transform m_PlayerLocation;
     public Transform m_EnemyLocation;
 
     private Battle m_Battle;
+    private Wave m_Wave;
 
     private void Awake() {
         m_BlackScreen.fillAmount = 1;
@@ -23,10 +25,11 @@ public class CombatStatemachine : StateMachine
     void Start()
     {
         m_Battle = new Battle();
+        m_Wave = m_Battle.GetWave();
         OnFinish = delegate {
-            ChangeState(new NextWaveState(this));;
+            ChangeState(new NextWaveState(this));
         };
-        RemoveBlackScreen(OnFinish);  
+        StartCoroutine(RemoveBlackScreen(OnFinish));  
     }
     void Update()
     {
@@ -74,7 +77,7 @@ public class CombatStatemachine : StateMachine
     Action OnFinish;
     IEnumerator RemoveBlackScreen(Action OnFinish) {
         while (m_BlackScreen.fillAmount > 0) {
-            m_BlackScreen.fillAmount -= 1.0f / 10.0f * Time.deltaTime;
+            m_BlackScreen.fillAmount -= 1.0f / 2.0f * Time.deltaTime;
             yield return null;
         }
         m_BlackScreen.gameObject.SetActive(false);

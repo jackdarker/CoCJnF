@@ -14,6 +14,7 @@ public class StateMachine: MonoBehaviour
         public virtual void Enter()
         {
             AddListeners();
+            Debug.Log("enter state" + this.GetType().ToString());
         }
 
         public virtual void Exit()

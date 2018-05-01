@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.3.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -359,39 +361,6 @@
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\ChangeColor.cs" />
     <Compile Include="Assets\Scripts\ClickToMoveController.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Ability.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\AbilityCatalog.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\AbilityMagicCost.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Area Of Effect\AbilityArea.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Area Of Effect\FullAbilityArea.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Area Of Effect\SpecifyAbilityArea.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Area Of Effect\UnitAbilityArea.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Effect Target\AbilityEffectTarget.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Effect Target\AbsorbDamageAbilityEffectTarget.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Effect Target\DefaultAbilityEffectTarget.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Effect Target\EnemyAbilityEffectTarget.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Effect Target\KOdAbilityEffectTarget.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Effect Target\UndeadAbilityEffectTarget.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Effects\BaseAbilityEffect.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Effects\DamageAbilityEffect.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Effects\EsunaAbilityEffect.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Effects\HealAbilityEffect.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Effects\InflictAbilityEffect.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Effects\ReviveAbilityEffect.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Hit Rate\ATypeHitRate.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Hit Rate\FullTypeHitRate.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Hit Rate\HitRate.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Hit Rate\STypeHitRate.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Power\BaseAbilityPower.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Power\MagicalAbilityPower.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Power\PhysicalAbilityPower.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Power\WeaponAbilityPower.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Range\AbilityRange.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Range\ConeAbilityRange.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Range\ConstantAbilityRange.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Range\InfiniteAbilityRange.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Range\LineAbilityRange.cs" />
-    <Compile Include="Assets\Scripts\Core\Ability\Range\SelfAbilityRange.cs" />
     <Compile Include="Assets\Scripts\Core\ApplicationManager.cs" />
     <Compile Include="Assets\Scripts\Core\BaseMonster.cs" />
     <Compile Include="Assets\Scripts\Core\CombatStatemachine.cs" />

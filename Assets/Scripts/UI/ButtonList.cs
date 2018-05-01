@@ -76,7 +76,7 @@ public class ButtonList : MonoBehaviour {
         m_Panel.enabled = false;
     }
     public void onClick(int i) {
-        int index = m_Page * Bt.Length + 1;
+        int index = m_Page * Bt.Length + i;
         string test=m_BtList[index]._Text;
         if (m_BtList[index].OnPressed != null) m_BtList[index].OnPressed(m_BtList[index]);
     }
