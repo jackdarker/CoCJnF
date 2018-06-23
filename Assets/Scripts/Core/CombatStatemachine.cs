@@ -68,6 +68,9 @@ public class CombatStatemachine : StateMachine
 
     }
 
+    public Wave GetWave() {
+        return m_Wave;
+    }
     public void SpawnEnemy() {
         //BaseMonster _Prefab =new Tiger() ; 
         //Instantiate(_Prefab, /*m_EnemyLocation.transform.position, m_EnemyLocation.transform.rotation,*/ m_EnemyLocation);

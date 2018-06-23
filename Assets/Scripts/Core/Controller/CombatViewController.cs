@@ -23,7 +23,7 @@ public class CombatViewController : BaseViewController
 
     public void Display()
     {
-        foreach (BaseMonster combatant in battle.GetWave().combatants)
+        foreach (BaseMonster combatant in battle.GetWave().Enemys)
         {
             GetView(combatant).Display(combatant);
         }
@@ -47,14 +47,14 @@ public class CombatViewController : BaseViewController
         var combatantView = GetView(battle.GetWave().m_Actor);
         //??StartCoroutine(combatantView.UpdateHitPointsProcess(battle.lastDamage));
 
-        combatantView = GetView(battle.GetWave().combatants[0]);
+        combatantView = GetView(battle.GetWave().Enemys[0]);
         yield return StartCoroutine(combatantView.UpdateEnergyProcess());
     }
 
     IEnumerator ShowAttackProcess()
     {
         var move = battle.GetWave().move;
-        var combatant = battle.GetWave().combatants[0];
+        var combatant = battle.GetWave().Enemys[0];
         moveCallout.text = move.name;
         //battleCrySource.clip = battle.combatants[0].CurrentPokemon.GetBattleCry();
         //battleCrySource.Play();

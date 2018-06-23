@@ -14,6 +14,8 @@ public class PlayersTurnState : StateMachine.State {
 
     public override void Enter() {
         base.Enter();
+        m_Owner.m_SelButtons.SetBtList(null);
+        m_Owner.m_Info.Hide();
         m_Owner.m_Message.text = "its your turn";
         List <ButtonList.ButtonItem> BtList = new List<ButtonList.ButtonItem>();
         BtList.Add(new ButtonList.ButtonItem("End Turn", "", null, OnPressed, "EndTurn"));

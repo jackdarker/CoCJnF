@@ -14,7 +14,7 @@ public class StateMachine: MonoBehaviour
         public virtual void Enter()
         {
             AddListeners();
-            Debug.Log("enter state" + this.GetType().ToString());
+            Debug.Log("enter state " + this.GetType().ToString());
         }
 
         public virtual void Exit()
@@ -82,14 +82,14 @@ public class StateMachine: MonoBehaviour
         CurrentState = GetState<T>();
     }*/
     public void ChangeState(State New) {
-        CurrentState = New;
+        Transition(New);
     }
     protected virtual void Transition(State value)
     {
         if (_currentState == value || _inTransition)
             return;
 
-        _inTransition = true;
+        //??_inTransition = true;
 
         if (_currentState != null)
             _currentState.Exit();

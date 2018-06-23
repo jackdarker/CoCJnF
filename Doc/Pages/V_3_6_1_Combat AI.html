@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Development Tools</title>
+</head>
+<body>
+    <h1>Thoughts on Combat-AI</h1>
+    <hr />
+    <h2>Whats the problem?</h2>
+    <p>The enemys behaviour should be dependent on:</p>
+    <ul>
+        <li>equipment and morphstate of the player</li>
+        <li>my equipment (available potions,spells, skills )</li>
+        <li>what actions the player uses (f.e. relying on light or heavy attacks)</li>
+    </ul>
+    <p>Furthermore when the partysize is >1:</p>
+    <ul>
+        <li>how I could possibly support other comrades (f.e. healing/ boosting ally)</li>
+        <li>who of the players-party can I cause the most damage</li>
+    </ul>
+
+    <H3>MinMaxPlanning</H3>
+    <p>Get all possible actions and counteractions to build a tree and estimate which branch of the tree is the optimum </p>
+    <p>Problematic because there might be many possible actions and because of randomness, a static tree is not possible</p>
+
+    <H3>Rule Engine (Rete)</H3>
+    <p>Define Rules and use backward chaining to get to the final goal, killing the player. </p>
+    <p>...Rules Engine are not meant for decisiion making ???</p>
+
+    <H3>Goal Oriented Action Planing</H3>
+    <p>Define SubGoals and Actions to fullfill them and reiterate other them.</p>
+    <p>...???</p>
+
+    <p>How do we select the actions? We need to know the costs to effect ratio.  </p>
+    <p>This is especially difficult for actions that</p>
+    <ul>
+        <li>take multiple turns to finish; is it better to use 2 simple attacks or 1 power attack caharged for 2 turns?</li>
+        <li>actions that dont deal damage directly, instead are supporting in nature or deal non-damaging effects like stun.</li>
+    </ul>
+
+    <p>Estimate effect-cost ratio for </p>
+    <ul>
+        <li>damage-actions:  possible damage/ Total HP  in relation to used AP and additional resources </li>
+        <li>restoration-actions:  possible restoration/ Total HP  in relation to used AP and additional resources </li>
+        <li>support-actions, f.e. shielding someone; boosting damage; :  </li>
+        <li>nondamage-actions, f.e. blinding; disarm:  </li>
+        <li>combined-actions , f.e leeching HP:    </li>
+    </ul>
+    <p>additionally we can depend on the job-preference of the NPC. F.e. a Fighter with Berserk-Job might prefer Power-Attacks and dont think about healing himself or others. While a Fighter with Paladin-Job might be more on the defensive side and also heals allys.</p>
+
+</body>
+</html>

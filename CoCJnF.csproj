@@ -364,11 +364,14 @@
     <Compile Include="Assets\Scripts\Core\ApplicationManager.cs" />
     <Compile Include="Assets\Scripts\Core\BaseMonster.cs" />
     <Compile Include="Assets\Scripts\Core\CombatStatemachine.cs" />
+    <Compile Include="Assets\Scripts\Core\CombatStateMachine\BattleVictoryState.cs" />
     <Compile Include="Assets\Scripts\Core\CombatStateMachine\EnemysTurnState.cs" />
     <Compile Include="Assets\Scripts\Core\CombatStateMachine\NextWaveState.cs" />
     <Compile Include="Assets\Scripts\Core\CombatStateMachine\PlayersTurnState.cs" />
     <Compile Include="Assets\Scripts\Core\CombatStateMachine\PreTurnState.cs" />
-    <Compile Include="Assets\Scripts\Core\CombatStateMachine\VictoryState.cs" />
+    <Compile Include="Assets\Scripts\Core\CombatStateMachine\BattleDefeatedState.cs" />
+    <Compile Include="Assets\Scripts\Core\CombatStateMachine\PreWaveState.cs" />
+    <Compile Include="Assets\Scripts\Core\CombatStateMachine\WaveVictoryState.cs" />
     <Compile Include="Assets\Scripts\Core\Controller\BaseViewController.cs" />
     <Compile Include="Assets\Scripts\Core\Controller\CombatantView.cs" />
     <Compile Include="Assets\Scripts\Core\Controller\CombatViewController.cs" />

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <title>Development Tools</title>
 </head>
-<body>
+<body>fygsd
     <h1>Combat</h1>
     <hr />
     This is a diagram of the combat flow.
@@ -17,13 +17,18 @@
         NextWave-->|Done|BattleVictory
         BattleVictory-->Return
         BattleLoss-->Return
+        BattleRetreat-->Return
         NextWave-->|NotDone|PreWave
+        NextWave-->|Flee|BattleRetreat
         PreWave-->PreTurn
         PreTurn-->PlayersTurn
         PlayersTurn-->EnemysTurn
+        PlayersTurn-->|Flee|BattleRetreat
         EnemysTurn-->PreTurn
-        PreTurn-->|Victory|Victory
-        PreTurn-->|Defeat|BattleLoss
+        PlayersTurn-->|Victory|Victory
+        PlayersTurn-->|Defeat|BattleLoss
+        EnemysTurn-->|Victory|Victory
+        EnemysTurn-->|Defeat|BattleLoss
         Victory-->NextWave
         end
         EnterTurn-->CheckDefeat

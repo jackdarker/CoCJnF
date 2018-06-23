@@ -14,6 +14,8 @@ public class NextWaveState : StateMachine.State{
     }
     public override void Enter() {
         base.Enter();
+        m_Owner.m_SelButtons.SetBtList(null);
+        m_Owner.m_Info.Hide();
         m_Owner.m_Message.text = "get Ready for next wave";
         List<ButtonList.ButtonItem> BtList = new List<ButtonList.ButtonItem>();
         BtList.Add(new ButtonList.ButtonItem("Go on", "", null, OnPressed, "Go"));
@@ -24,7 +26,7 @@ public class NextWaveState : StateMachine.State{
     public void OnPressed(ButtonList.ButtonItem bt) {
         switch (bt._ID) {
             case "Go":
-                m_Owner.ChangeState(new PreTurnState(m_Owner));
+                m_Owner.ChangeState(new PreWaveState(m_Owner));
                 break;
             case "Flee":
                 //TODO

@@ -15,6 +15,9 @@ public class Battle //Todo holds the data of the BattleWaves
 
     public Battle(){
         CurrWave = 0;
+        m_Waves = new Wave[1];
+        m_Waves[0] = new Wave();
+        //m_Waves[0].combatants.Add()
     }
     private int CurrWave;
     private Wave[] m_Waves;

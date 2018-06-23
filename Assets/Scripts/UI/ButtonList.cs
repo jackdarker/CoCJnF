@@ -46,9 +46,13 @@ public class ButtonList : MonoBehaviour {
         }
     }
     public void SetBtList(List<ButtonItem> list) {
-        m_BtList=list;
-        m_Page = 0;
-        Display();
+        if (list != null) {
+            m_BtList = list;
+            m_Page = 0;
+            Display();
+        } else {
+            Hide();
+        }
     }
     public void Display() {
         int k_PageSize = Bt.Length;

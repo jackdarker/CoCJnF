@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Stats : MonoBehaviour {
+public class Stats  {
     #region Notifications
     public static string WillChangeNotification(StatTypes type) {
         if (!_willChangeNotifications.ContainsKey(type))
