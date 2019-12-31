@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Development Doc</title>
+    <link href="js/DocStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>
+        Use of Make Human Tools togehter with blender</h1>
+    <h2>
+        Use MakeWalk to import bhv motioncapture files</h2>
+    <p> We can use makewalk to import bhv animation data and remap them to our (human) skeleton. </p>
+    <p>
+        <a href="https://sites.google.com/a/cgspeed.com/cgspeed/motion-capture/cmu-bvh-conversion">CMU bhv conversion collection</a></p>
+    <p>
+    <ul>
+        <li>Install makehuman blender tools into the users blender script directory and activate them in preferences. "...\AppData\Roaming\Blender Foundation\Blender\2.79\scripts\addons"</li>        <li>You might need to create a mapping file to map the animation rig to your rig. (No whitespace in Bone names !) "...addons\makewalk\target_rigs"</li>        <li>Load your blend-file. Select your armature and switch to pose mode.</li>        <li>In toolshelf->MakeWalk->Target Armature, disable Auto target rig and select your mapping file</li>        <li>In toolshelf->MakeWalk->, set last frame appropialty, and run Lod and retarget</li>        <li>If this doesnt work you need to activate detailed steps and try the different operations:</li>        <li>It might be necessary to load the rig from the bhv and use retarget selected to active to. Then load the bhv again.</li>        <li>This should now create a working NLA action on your rig.</li>        <li>You should set IK modifier weight in your rig to 0 since only FK is used.</li>        <li>Use simplify curve to remove unecessary keyframes.</li>        </ul>>
+    </p>
+    <h2>
+        Use Makecloth to create Cloth for MakeHuman bodys</h2>
+    <p>
+    <ul>
+        <li>Install makehuman blender tools into the users blender script directory and activate them in preferences. "...\AppData\Roaming\Blender Foundation\Blender\2.79\scripts\addons"</li>        <li>Create empty blend file and Load base mesh with Make cloth in properties panel of 3D view.</li>        <li>Dont alter anything on this model or you will get errors on makecloth</li>        <li>Duplicate the human model and name it manequin. Hide the human model.</li>        <li>select the faces on the manequin you want to create cloths created from. Duplicate those faces and separate them into your cloth model.</li>        <li>You can use the manequin to see how your cloth looks on it and as a source for the shrinkwrap modifier.</li>        <li>Extrude or use the solidify modifier to thicken the clothes. Add more Quads to create the cloth but dont alter the inner quads pointing to human body. You need to apply modifiers.</li>        <li>Delete all materials from cloth except one.</li>        <li>Select human model and in editmode and select the vertices that are covered by cloth. Press create vertex group from selection. If your cloth gets distorted in Makehuman, its likely your vertex selection doesnt fit.</li>        <li>Select cloth model and press create vertex group. This should assign each vertex the group left , right or middle. Make sure each vertex has exactly one group assigned.</li>        <li>Switch to objectmode, select your cloth model and then the human model and press Make cloth. This should export the cloth model into the ...<user></user>\Documents\makehuman\v1\data\clothes\...</li>        <li>While working in blender you can open Makehuman and your exported cloth should be added to the Geometries->Cloth section. The model will be reloaded whenever you toggle the cloth off/on.</li>        </ul>>
+    </p>
+</body>
+</html>

@@ -56,16 +56,19 @@ public class ButtonList : MonoBehaviour {
     }
     public void Display() {
         int k_PageSize = Bt.Length;
-        int index;
+        int index=0;
         for (int i = 0; i < k_PageSize; i++) {
             index = (m_Page * k_PageSize) + i;
             if (index< m_BtList.Count) {
                 Bt[i].GetComponentInChildren<Text>(true).text = m_BtList[index]._Text;
                 Bt[i].enabled = true;
+                Bt[i].gameObject.SetActive(true);
             } else {
-                Bt[i].enabled = false;
+                Bt[i].gameObject.SetActive( false);
             }
         }
+        m_BtUp.enabled = (m_Page>0);
+        m_BtDown.enabled = (m_BtList.Count >= index);
         Show();
     }
     public void Hide()
@@ -81,17 +84,17 @@ public class ButtonList : MonoBehaviour {
     }
     public void onClick(int i) {
         int index = m_Page * Bt.Length + i;
-        string test=m_BtList[index]._Text;
         if (m_BtList[index].OnPressed != null) m_BtList[index].OnPressed(m_BtList[index]);
     }
     public void OnDown() {
-        
+        m_Page++;
+        Display();
     }
     public void OnUp() {
-
+        m_Page--;
+        Display();
     }
     public void OnBack() {
-        if (OnBackClicked != null)
-            OnBackClicked(this, EventArgs.Empty);
+        if (OnBackClicked != null) OnBackClicked(this, EventArgs.Empty);
     }
 }

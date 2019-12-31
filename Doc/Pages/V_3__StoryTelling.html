@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Development Tools</title>
+</head>
+<body>
+    <h1> Story-Telling</h1>
+    <p>Story-Telling, fe.
+    <ul>
+        <li>NPC Interaction</li>
+        <li>story events</li>
+    </ul>is done in visiual novel like style similiar to renpy.
+</p>
+    <p>Example scenario:
+    <ul>
+        <li>(A) You meet a wise man that could give you some information. But a bunch of grunts stole his googles that he needs to decypher his scrolls. This starts a quest 
+            QuestWiseMansGoogles</li>
+        <li>(B) After finding the grunt's hideout you have the option to fight them, steal the googles back or persuade them to hand them over.</li>
+        <li>(C) You bring the googles back to the wise man and earn his gratitude.</li>
+        <li>(D) Depending on other occurences, additional dialog themes might get unlocked, </li>
+
+    </ul>
+    <p>
+        &nbsp;</p>
+    <ul>
+        <li>use a generic asset/scene for dialog</li>
+        <li>trigger the asset and point it to getThemesForDialog(ThemeID). ThemeID is an 
+        Identifier for the concrete dialogScene f.e. SceneWiseMan</li>
+        <li>quest/storys/Chatter.. register themself to the DialogMgr:&nbsp; 
+            RegisterDialogForQuest(ThemeID, QuestID)</li>
+        <li>getThemesForDialog fetches the actual quests/character relation/... related to 
+            ThemeID and triggers getDialog(ThemeID) to build a combined DialogTree</li>
+        <li>depending on pc choice/calculation: navigate through the dailogtree and switch state of the actual dialog-theme</li>
+        <li>the dialog might be terminated and switch back to the previous scene 
+            (exploration,...) or call a new scene (combat, trading,...). </li>
+
+    </ul>
+    </p>
+    <h2> Visual novel functions</h2>
+    <p>
+        The visual novel asset implements<ul>
+        <li>dialog display</li>
+        <li>menu selection, custom buttons</li>
+        <li>Edit-fields for Text &amp; Number</li>
+        <li>transition, fading</li>
+        <li>background image</li>
+        <li>multiple layerd images</li>
+        <li>animation of x-y-z, scale, rotation, shake</li>
+        <li>graphic effects (whirl, jitter)</li>
+        <li>cut out animation ?</li>
+        <li>sound and backgroundmusic</li>
+    </ul></p>
+
+    <p>
+        No undo functionality except for testing purpose?</p>
+    <p>
+        No save/load while in dialog?</p>
+    <h2> Data</h2>
+    <p>Where is the story data stored?</p>
+    <h3>DialogTreeBuilder</h3>
+    <p>A database that checks witch DialogTrees are applicable for the ThemeID. It 
+        therefore iterates over all registered DialogEntrys and returns an initial 
+        DialogTree.</p>
+    <p>&nbsp;</p>
+    <h3>DialogTree</h3>
+    <p>An object that represents the actual state of the dialog </p>
+    <p>getDialog() -&gt; DialogSet: returns an DialogSet containing information for the 
+        text &amp; pictures to display, animations to play, settings for fade in/out, 
+        choices</p>
+    <p>continueDialog(choiceID) -&gt; result: triggers the creation of the next DialogSet; 
+        result might be &quot;continue dialog&quot;, &quot;exit dialog&quot;, &quot;exit dialog and switch scene&quot; </p>
+</body>
+</html>

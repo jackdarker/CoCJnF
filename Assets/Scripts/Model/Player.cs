@@ -2,7 +2,7 @@
 using System;
 
 [Serializable]
-public class Player : BaseMonster
+public class Player : BaseActor
 {
     public string nickName;
     public int tileIndex;

@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tiger : BaseMonster {
+public class Tiger : BaseActor {
 
 }

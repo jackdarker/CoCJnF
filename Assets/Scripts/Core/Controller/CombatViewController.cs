@@ -23,7 +23,7 @@ public class CombatViewController : BaseViewController
 
     public void Display()
     {
-        foreach (BaseMonster combatant in battle.GetWave().Enemys)
+        foreach (BaseActor combatant in battle.GetWave().Enemys)
         {
             GetView(combatant).Display(combatant);
         }
@@ -70,7 +70,7 @@ public class CombatViewController : BaseViewController
         moveCallout.text = "";
     }
 
-    CombatantView GetView(BaseMonster combatant)
+    CombatantView GetView(BaseActor combatant)
     {
         return combatant.IsControlledByPlayer() ? playerCombatant : computerCombatant;
     }

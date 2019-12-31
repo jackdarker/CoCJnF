@@ -6,12 +6,12 @@ using System;
 public class Wave //Todo holds the data of the current battle
 {
 
-    public List<BaseMonster> Players = new List<BaseMonster>();
-    public List<BaseMonster> Enemys = new List<BaseMonster>();
+    public List<BaseActor> Players = new List<BaseActor>();
+    public List<BaseActor> Enemys = new List<BaseActor>();
     public Move move;
-    public BaseMonster m_Actor;
+    public BaseActor m_Actor;
     public Wave() {
-        Players.Add(new BaseMonster());
+        Players.Add(new BaseActor());
         Enemys.Add(new Tiger());
     }
     public bool IsPlayerDefeated() {

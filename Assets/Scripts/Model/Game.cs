@@ -5,9 +5,12 @@ using UnityEngine;
 [Serializable]
 public class Game
 {
-    private double m_Time;  //1.5 = 1:30;
+    private double m_Time;  //in h ??: 1.5 = 1:30;
     private int m_Days;
+    private string m_SceneName;
+
     public EventHandler EvtClockChange;
+
     public string GetTimeAsString() { return m_Time.ToString(); }  //Todo format
     public string GetDaysAsString() { return m_Days.ToString(); }  //Todo format
     public void AddTimeToClock(double Hours) {
@@ -22,9 +25,10 @@ public class Game
         if (EvtClockChange != null)
             EvtClockChange(this, EventArgs.Empty);
     }
-    
-    
 
+
+    public string GetMap() { return m_SceneName; } // this is the actual loaded Scene 
+    
     public List<Player> players;
     public int currentPlayerIndex;
     public Player CurrentPlayer { get { return players[currentPlayerIndex]; } }

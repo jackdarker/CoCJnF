@@ -5,49 +5,61 @@
     <meta charset="utf-8" />
     <title>Development Tools</title>
 </head>
-<body>
+<body><p>
 Imagine the following:
-- you write a quest milestone that should react whenever the player wears some sort of health potion in its inventory like:
-`if(player.inventory.HasItemOfClass(SmallHealthPotion)) {
-
-    player.SendNotification("You have an health potion in your inventory");
-}`
-- Now someone adds an item "BetterHealthPotion". You would have to change your code to:
-`if(player.inventory.HasItemOfClass(SmallHealthPotion) ||
-
-  player.inventory.HasItemOfClass(BetterHealthPotion)) {
-
-    player.SendNotification("You have an health potion in your inventory");
-}`
-- That would lead to a lot of coupling and maintenance
-
-To bypass this a Tags are used:
-- Each object can have 0 to n Tags assigned , f.e. "BetterHealthPotion" has Tag {Potion:RestoreHealth}
-- other objects can query the objects Tags or can filter lists of objects by Tags. Only the baseObject of the object is needed for this.
-- the code would now look like this:
-
-`if(player.inventory.HasItemWithTag(Potion:RestoreHealth)) {
-
-    player.SendNotification("You have an health potion in your inventory");
-}`
-# Tags
-- Game.GameObjectBase is the Parent class of all Items, perks, Quests and so on. It has functions to maintain the associated tags:
-- addTag
-- removeTag
-- removeAllTags
-- hasTag
-- hasAllTags
-- hasAnyTags
-- Child-Objects can modify their tags
-- Other objects can access the tags because they only need to refer to Game.GameObjectBase - no coupling to specifi objects
-- a Tag consists of a sector and form f.e. Species:Fox => Sector=Species & Form=Fox
-- Tags might relate to each other, f.e. Species:Fox and Species:Wolf relate to Species:Canine.
-
+        </p>
+    <p>- you write a quest milestone that should react whenever the player wears some sort of health potion in its inventory like:
+<br />if(player.inventory.HasItemOfClass(SmallHealthPotion)) {
+<br />    player.SendNotification("You have an health potion in your inventory");
+<br />}
+<br />- Now someone adds an item "BetterHealthPotion". You would have to change your code to:
+<br />if(player.inventory.HasItemOfClass(SmallHealthPotion) ||
+<br />  player.inventory.HasItemOfClass(BetterHealthPotion)) {
+<br />    player.SendNotification("You have an health potion in your inventory");
+<br />}
+- That would lead to a lot of coupling and maintenance</p>
+<br /><p>To bypass this a Tags are used:
+<br />- Each object can have 0 to n Tags assigned , f.e. "BetterHealthPotion" has Tag {Potion:RestoreHealth}
+<br />- other objects can query the objects Tags or can filter lists of objects by Tags. Only the baseObject of the object is needed for this.
+<br />- the code would now look like this:
+<br />if(player.inventory.HasItemWithTag(Potion:RestoreHealth)) {
+<br />    player.SendNotification("You have an health potion in your inventory");
+<br />}</p>
+<p># Tags
+<br />- Game.GameObjectBase is the Parent class of all Items, perks, Quests and so on. It has functions to maintain the associated tags:
+<br />- addTag
+<br />- removeTag
+<br />- removeAllTags
+<br />- hasTag
+<br />- hasAllTags
+<br />- hasAnyTags
+<br />- Child-Objects can modify their tags
+<br />- Other objects can access the tags because they only need to refer to Game.GameObjectBase - no coupling to specifi objects
+<br />- a Tag consists of a sector and form f.e. Species:Fox => Sector=Species & Form=Fox
+<br />- Tags might relate to each other, f.e. Species:Fox and Species:Wolf relate to Species:Canine.
+</p><p>
 # Tag-database
-
-- this database contains all Tags and their relation
-- the difficult thing is to define available Tags and their relation. A change here can cause a lot of changes in other classes !
-- TODO: Please see the Tag-List for a listing of all Tags
-
+<br />- this database contains all Tags and their relation
+<br />- the difficult thing is to define available Tags and their relation. A change here can cause a lot of changes in other classes !
+<br />- TODO: Please see the Tag-List for a listing of all Tags
+</p>
+<hr />
+    <!-- see https://mermaidjs.github.io/flowchart.html-->
+    <div class="mermaid">
+        graph TB
+        subgraph tagcloud
+        creature-->Fox
+        creature-->Wolf
+        creature-->Ghoul
+        creature-->Ghost
+        living-->Fox
+        living-->Wolf
+        undead-->Ghoul
+        undead-->Ghost
+        end
+    </div>
+    <hr />    
+    <script src="../js/mermaid.min.js"></script>
+    <script>        mermaid.initialize({ startOnLoad: true });</script>
 </body>
 </html>
