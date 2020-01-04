@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ public class Quest
         m_Name = Name;
         m_Mile = null;
     }
-
+    public event Action QuestUpdated;
     public string GetName(){
 			return m_Name;
 		}
@@ -88,7 +89,8 @@ public class Quest
 			m_Finished = true;
 		}else if (Next > 0) {
 			ActivateMileByID(Next);
-            m_Hidden = false;
+            SetHidden(GetMileByID(Next).GetHidden());
+            QuestUpdated();
 		}
 	}
 	public QuestMilestone GetMileByID(int ID) {

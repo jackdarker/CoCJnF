@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Triggers when a certain milestone is active
 /// </summary>
-public class nMileStoneActive : MonoBehaviour, ICondition {
+public class nMileStoneActive : ICondition {
     private static string Name = "nMileStoneActive";
 	public nMileStoneActive(int quest, int mile) {
         m_QuestId = quest;

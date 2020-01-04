@@ -3,32 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_Questlog : MonoBehaviour
+public class UI_Questlog : BasePanel
 {
-    public GameObject m_Panel;
     public ButtonList m_SelButtons;
     public InfoBox m_Info;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         m_Page = 0;
         m_SelButtons.OnBackClicked += OnCancle;
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
     public void OnPressed(ButtonList.ButtonItem bt) {
         Quest q = QuestManager.getSingleton().GetQuestById(int.Parse(bt._ID));
         m_Info.ShowText(q.GetName(), q.GetLogDescription());
     }
-    protected void OnCancle(object sender, EventArgs e) {
-        Hide();
-    }
-    public void Display() {
+
+    public override void Display() {
         int k_PageSize = m_SelButtons.Bt.Length;
         int index=m_Page* k_PageSize;
         List<ButtonList.ButtonItem> BtList = new List<ButtonList.ButtonItem>();
@@ -42,12 +35,6 @@ public class UI_Questlog : MonoBehaviour
         m_SelButtons.SetBtList(BtList);
         m_Info.ShowText("", "");
         Show();
-    }
-    public void Show() {
-        m_Panel.gameObject.SetActive(true);
-    }
-    public void Hide() {
-        m_Panel.gameObject.SetActive(false);
     }
     protected int m_Page = 0;
 }

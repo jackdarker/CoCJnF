@@ -23,7 +23,10 @@ public class DialogBox : MonoBehaviour {
         //    Bt[i].onClick.AddListener(delegate { onClick(fixedi); });
         //}
     }
-    
+    public void Display(DialogSceneData Data) {
+        m_Data = Data;
+        Display();
+    }
     public void Display() {
         for (int i = 0; i < Bt.Length; i++) {
             Bt[i].onClick.RemoveAllListeners();

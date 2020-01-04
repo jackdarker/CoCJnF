@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogTree : MonoBehaviour
+public class DialogTree 
 {
     public DialogTree() { }
     //public DialogResult ContinueDialog(int Choice) {

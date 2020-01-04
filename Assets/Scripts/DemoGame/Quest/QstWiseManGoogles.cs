@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QstWiseManGoogles : MonoBehaviour {
+public class QstWiseManGoogles  {
     public enum MileEnum {
         Start = 0,
         FindHim = 10,
@@ -28,6 +28,7 @@ public class QstWiseManGoogles : MonoBehaviour {
         _mile.AddCondition(_Cond, (int)MileEnum.BeginGoogleQuest);
         _mile.SetDescription("You need to find a wise man to get more info");
         myQuest.AddMileStone(_mile);
+        myQuest.SetHidden(false);
 
         _mile = new QuestMilestone((int)MileEnum.BeginGoogleQuest, "He might have a quest for you");
         //NoCondition ?

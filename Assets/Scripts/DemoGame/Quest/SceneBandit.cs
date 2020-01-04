@@ -43,14 +43,20 @@ public class SceneBandit : DialogSceneData {
                 break;
             case 21:
                 _Say.m_What = "Piss off";
-                dlg.SetDone();
                 dlg.AddElement(_Say);
+                m_State = 22;
+                break;
+            case 22:
+                dlg.SetDone();
                 break;
             case 30:
                 _Say.m_What = "You sneak around their backside and see the googles right there in a basket. You grab them.";
-                dlg.SetDone();
                 QuestManager.getSingleton().GetQuestById((int)QuestGlobals.QuestEnum.QstWiseManGoogles).ActivateMileByID(
                     (int)QstWiseManGoogles.MileEnum.HuntGoogleQuest2);
+                m_State = 31;
+                break;
+            case 31:
+                dlg.SetDone();
                 break;
             case 40:
                 _Say.m_What = "You are not fit enough for this.";

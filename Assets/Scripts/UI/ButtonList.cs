@@ -61,6 +61,8 @@ public class ButtonList : MonoBehaviour {
             index = (m_Page * k_PageSize) + i;
             if (index< m_BtList.Count) {
                 Bt[i].GetComponentInChildren<Text>(true).text = m_BtList[index]._Text;
+                if (m_BtList[index]._Image!=null)
+                    Bt[i].GetComponentInChildren<Image>(true).sprite= m_BtList[index]._Image;
                 Bt[i].enabled = true;
                 Bt[i].gameObject.SetActive(true);
             } else {

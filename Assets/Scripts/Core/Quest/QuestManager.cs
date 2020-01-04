@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class QuestManager
             singleton = new QuestManager();
         return singleton;
     }
-
+    public event Action QuestUpdated;
     private QuestManager() {
 
     }
@@ -33,13 +34,15 @@ public class QuestManager
   //      return null;
 		//}
 
-		public void AddQuest(Quest value){
-            m_Quests.Add(value.GetUId(), value);    //Todo update 
-		}
-        public void RemoveQuest(int Id) {
-            if (m_Quests.ContainsKey(Id)) {
-                m_Quests.Remove(Id);
-            }
-		}
-		private Dictionary<int,Quest> m_Quests = new Dictionary<int, Quest>();
+	public void AddQuest(Quest value){
+        value.QuestUpdated += QuestUpdated;
+        m_Quests.Add(value.GetUId(), value);    //Todo update 
+        
+	}
+    public void RemoveQuest(int Id) {
+        if (m_Quests.ContainsKey(Id)) {
+            m_Quests.Remove(Id);
+        }
+	}
+	private Dictionary<int,Quest> m_Quests = new Dictionary<int, Quest>();
 }
