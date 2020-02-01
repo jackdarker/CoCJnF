@@ -5,9 +5,10 @@ using UnityEngine;
 /// <summary>
 /// storage for Items (Player - Inventory, Treasure-Chests,...)
 /// </summary>
-public class Inventory : MonoBehaviour {
+public class Inventory  {
 	public Inventory() 		{		}
-	public void SetSlotCount(int value) {
+    //Set maximum number of slots; -1 for unlimited
+    public void SetSlotCount(int value) {
 		m_SlotCount = value;
 	}
 	public int GetSlotsMax() {
@@ -25,6 +26,7 @@ public class Inventory : MonoBehaviour {
 		return Count;
 	}
 	public InventoryItem GetItem(int Slot) {
+        if (Slot >= m_Slots.Count || Slot < 0) return null;
 		return m_Slots[Slot] as InventoryItem;
 	}
 	//-1 removes all
@@ -52,6 +54,10 @@ public class Inventory : MonoBehaviour {
 	}
 	private bool ReplaceItem(InventoryItem NewItem, int Slot, int Count= 1) {
 		NewItem.SetCount(Count);
+        int i = m_Slots.Count-1;
+        for (; i < Slot; i++) {
+            m_Slots.Add(null);
+        }
 		m_Slots[Slot] = NewItem;
 		Cleanup();
 		return true;
@@ -73,7 +79,8 @@ public class Inventory : MonoBehaviour {
 		}
 		return Index;
 	}
-	public int FindNextFreeSlot(InventoryItem item) {
+    //returns the Slot-Index of an slot already matching this item 	or a new slot
+    public int FindNextFreeSlot(InventoryItem item) {
 		Cleanup();
 		int Index = -1;
 		Index = FindItem(item.GetUId(), item.IsEquipped() > 0);
@@ -92,7 +99,8 @@ public class Inventory : MonoBehaviour {
 				break;
 			}
 		}
-		if (Index == -1 ) Index = m_Slots.Count;
+        if(Index == -1 && m_SlotCount ==-1) Index = m_Slots.Count; 
+		if(Index == -1 && m_Slots.Count< m_SlotCount) Index = m_Slots.Count;
 		return Index;
 	}
 	public void Cleanup() {
@@ -108,7 +116,7 @@ public class Inventory : MonoBehaviour {
 		m_Slots.Sort(sortOnName);
 	}
 
-	private int m_SlotCount = 1;
+	private int m_SlotCount = -1;
 	private List<InventoryItem> m_Slots = new List<InventoryItem>();
     private static SortOnName sortOnName = new SortOnName();
 

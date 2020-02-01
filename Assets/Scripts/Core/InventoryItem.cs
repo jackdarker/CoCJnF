@@ -7,11 +7,12 @@ using UnityEngine;
 /// </summary>
 public class InventoryItem 
 {
-	public InventoryItem(int ID) 
+	public InventoryItem(string UID) 
 	{
+        m_UId = UID;
 	}
 	public InventoryItem Clone() {
-        InventoryItem New = new InventoryItem(0);
+        InventoryItem New = new InventoryItem(this.GetUId());   //Todo thats not working - how to call specific constructor
 		New.Copy(this);
 		return New;
 	}
@@ -77,7 +78,10 @@ public class InventoryItem
 			m_Target = Target;
 		}
 	}
-	private bool IsOwnedBy(BaseActor Target) {
+    public BaseActor GetOwner() {
+       return m_Target ;
+    }
+    private bool IsOwnedBy(BaseActor Target) {
 		return (m_Target == Target);    //Todo just compare name ?
 	}
 	protected void OnEquippChanged() {
@@ -119,7 +123,7 @@ public class InventoryItem
 	}
 	protected int m_EquippLoc = 0;
 	private int m_Count = 1;
-	public BaseActor m_Target = null;
+	private BaseActor m_Target = null;
 	public string m_Name= "";
 	public bool m_ConsumeEffectActive= false;
 	public int m_EffectDuration = 0;

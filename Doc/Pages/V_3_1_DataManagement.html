@@ -9,10 +9,43 @@
 <ul>
 <li>after loading the data, it is kept in the "Persistance scene" and made available to the child-scenes</li>
 <li>the data stores player-stats including inventory,player position, actual effects- Also state of milestones and unlocked perks.</li>
-<li>where is the player data saved</li>
+<li>where is the player data saved ? sqlite, binary file, json</li>
 <li>which format is used</li>
 <li>compatibility issues between game-versions</li>
+    <li>saving of gameobjects provided by mods</li>
 </ul>
+
+    <p>
+        - jedes GameObject das Daten speichern muss meldet sich beim DataService an und 
+        wird abgefragt wenn gespeichert wird</p>
+    <p>
+        - es werden nur die GO abgefragt/gespeichert die in der aktuellen Scene 
+        vorhanden sind</p>
+    <p>
+        Scene Town<br />
+        &nbsp;&nbsp;&nbsp; - NPC Trader - Inventory <br />
+        &nbsp;&nbsp;&nbsp;- NPC PlayersPet
+    </p>
+    <p>
+        Scene Forest<br />
+        &nbsp;&nbsp;&nbsp; - NPC Bear - Inventory <br />
+        &nbsp;&nbsp;&nbsp;- NPC PlayersPet
+    </p>
+    <p>
+        Problem: 
+    </p>
+    <p>
+        - abhängig von der Scene sind nicht alle GO existent die gespeichert werden 
+        müssen (z.B. ein NPC der in der Scene nicht vorhanden ist); deren Daten müssen 
+        aber beibehalten werden   
+    </p>
+    <p>
+        - nicht nur die daten des GO müssen wiederhergestellt werden sonder auch die 
+        Beziehung zu anderen GO: [NPC1] hat [Inventar] mit 1xBattery, die [Battery] hat 
+        50% Ladung</p>
+    <p>
+        - jedes GO muss eindeutig identifiziert werden können um die richtigen Daten 
+        zuzuordnen</p>
 
 </body>
 </html>

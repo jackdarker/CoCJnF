@@ -11,6 +11,9 @@ public class nVisitsNPC :  ICondition {
         m_NPCId = NPCId;
         bContinuously = false;
     }
+    public string GetText() {
+        return Name;    //Todo
+    }
     public string GetName(){
 			return Name;
 		}

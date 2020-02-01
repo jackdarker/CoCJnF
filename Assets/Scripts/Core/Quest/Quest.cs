@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Quest 
-{
+public class Quest : IPersistable {
     // Start is called before the first frame update
     //void Start()
     //{
@@ -61,6 +60,11 @@ public class Quest
             if (m_Mile != null && m_Mile.EnterMilestone != null) {
                 m_Mile.EnterMilestone();
             }
+
+            if (!mile.GetHidden()) {
+                SetHidden(false);
+                QuestUpdated();
+            }
         }
 	}
 	public void AddMileStone(QuestMilestone Mile) {
@@ -89,8 +93,6 @@ public class Quest
 			m_Finished = true;
 		}else if (Next > 0) {
 			ActivateMileByID(Next);
-            SetHidden(GetMileByID(Next).GetHidden());
-            QuestUpdated();
 		}
 	}
 	public QuestMilestone GetMileByID(int ID) {
@@ -99,11 +101,22 @@ public class Quest
 
 		return null;
 	}
-	private string m_Description= "";
+
+    void IPersistable.Restore(SaveData data) {
+        //set the actual mile by the stored ID
+        throw new NotImplementedException();
+    }
+
+    SaveData IPersistable.Save() {
+        //just remember the actual mile-id
+        throw new NotImplementedException();
+    }
+    //Todo flag if the pc has noticed this quest
+    private string m_Description= "";
 	private string m_Name= "";
 	private int m_UId = 0;
 	private QuestMilestone m_Mile;
 	private Dictionary<int, QuestMilestone> m_MileStones = new Dictionary<int, QuestMilestone>();
 	public bool m_Finished = false;
-	public bool m_Hidden = false;
+	protected bool m_Hidden = false;
 }

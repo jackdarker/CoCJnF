@@ -75,19 +75,6 @@
     <Compile Include="Assets\Prefabs\ThirdPersonCharacter\Scripts\AICharacterControl.cs" />
     <Compile Include="Assets\Prefabs\ThirdPersonCharacter\Scripts\ThirdPersonCharacter.cs" />
     <Compile Include="Assets\Prefabs\ThirdPersonCharacter\Scripts\ThirdPersonUserControl.cs" />
-    <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
-    <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
-    <Compile Include="Assets\ProCore\ProBuilder\API Examples\Misc\HueCube.cs" />
-    <Compile Include="Assets\ProCore\ProBuilder\API Examples\Procedural Mesh\ExtrudeRandomEdges.cs" />
-    <Compile Include="Assets\ProCore\ProBuilder\API Examples\Runtime Editing\RuntimeEdit.cs" />
-    <Compile Include="Assets\ProCore\ProBuilder\API Examples\Vertex Colors\HighlightNearestFace.cs" />
-    <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Constant.cs" />
-    <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Enum.cs" />
-    <Compile Include="Assets\ProCore\ProGrids\Classes\pg_IconUtility.cs" />
-    <Compile Include="Assets\ProCore\ProGrids\Classes\pg_IgnoreSnapAttribute.cs" />
-    <Compile Include="Assets\ProCore\ProGrids\Classes\pg_SceneMeshRender.cs" />
-    <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Util.cs" />
-    <Compile Include="Assets\ProCore\ProGrids\MonoBehaviour\pg_IgnoreSnap.cs" />
     <Compile Include="Assets\Scripts\ActiveStateToggler.cs" />
     <Compile Include="Assets\Scripts\Animation\EasingControl.cs" />
     <Compile Include="Assets\Scripts\Animation\EasingEquations.cs" />
@@ -108,7 +95,7 @@
     <Compile Include="Assets\Scripts\ChangeColor.cs" />
     <Compile Include="Assets\Scripts\ClickToMoveController.cs" />
     <Compile Include="Assets\Scripts\Core\ApplicationManager.cs" />
-    <Compile Include="Assets\Scripts\Core\BaseMonster.cs" />
+    <Compile Include="Assets\Scripts\Core\BaseActor.cs" />
     <Compile Include="Assets\Scripts\Core\CombatStatemachine.cs" />
     <Compile Include="Assets\Scripts\Core\CombatStateMachine\BattleDefeatedState.cs" />
     <Compile Include="Assets\Scripts\Core\CombatStateMachine\BattleVictoryState.cs" />
@@ -119,7 +106,10 @@
     <Compile Include="Assets\Scripts\Core\CombatStateMachine\PreWaveState.cs" />
     <Compile Include="Assets\Scripts\Core\CombatStateMachine\WaveVictoryState.cs" />
     <Compile Include="Assets\Scripts\Core\Condition\ICondition.cs" />
+    <Compile Include="Assets\Scripts\Core\Condition\nAnd.cs" />
+    <Compile Include="Assets\Scripts\Core\Condition\nAny.cs" />
     <Compile Include="Assets\Scripts\Core\Condition\nMileStoneActive.cs" />
+    <Compile Include="Assets\Scripts\Core\Condition\nTrue.cs" />
     <Compile Include="Assets\Scripts\Core\Condition\nVisitsNPC.cs" />
     <Compile Include="Assets\Scripts\Core\Controller\BaseViewController.cs" />
     <Compile Include="Assets\Scripts\Core\Controller\CombatantView.cs" />
@@ -131,6 +121,7 @@
     <Compile Include="Assets\Scripts\Core\Controller\MenuState.cs" />
     <Compile Include="Assets\Scripts\Core\Controller\NewGameState.cs" />
     <Compile Include="Assets\Scripts\Core\Controller\NewGameViewController.cs" />
+    <Compile Include="Assets\Scripts\Core\Controller\TextManager.cs" />
     <Compile Include="Assets\Scripts\Core\DatabaseController.cs" />
     <Compile Include="Assets\Scripts\Core\DataController.cs" />
     <Compile Include="Assets\Scripts\Core\Exceptions\BaseException.cs" />
@@ -149,6 +140,11 @@
     <Compile Include="Assets\Scripts\Core\FlowController.cs" />
     <Compile Include="Assets\Scripts\Core\GameFactory.cs" />
     <Compile Include="Assets\Scripts\Core\InputController.cs" />
+    <Compile Include="Assets\Scripts\Core\Interaction\BaseInteractable.cs" />
+    <Compile Include="Assets\Scripts\Core\Interaction\DelayedReaction.cs" />
+    <Compile Include="Assets\Scripts\Core\Interaction\Reaction.cs" />
+    <Compile Include="Assets\Scripts\Core\Interaction\ReactionCollection.cs" />
+    <Compile Include="Assets\Scripts\Core\Interaction\ReactionText.cs" />
     <Compile Include="Assets\Scripts\Core\IntroState.cs" />
     <Compile Include="Assets\Scripts\Core\Inventory.cs" />
     <Compile Include="Assets\Scripts\Core\InventoryItem.cs" />
@@ -156,6 +152,7 @@
     <Compile Include="Assets\Scripts\Core\Notification Center\NotificationExtensions.cs" />
     <Compile Include="Assets\Scripts\Core\Persistance\DataReseter.cs" />
     <Compile Include="Assets\Scripts\Core\Persistance\DataService.cs" />
+    <Compile Include="Assets\Scripts\Core\Persistance\IPersistable.cs" />
     <Compile Include="Assets\Scripts\Core\Persistance\PlayerPrefsHandler.cs" />
     <Compile Include="Assets\Scripts\Core\Persistance\ResetableScriptableObject.cs" />
     <Compile Include="Assets\Scripts\Core\Persistance\SaveData.cs" />
@@ -169,10 +166,15 @@
     <Compile Include="Assets\Scripts\Core\StateMachine.cs" />
     <Compile Include="Assets\Scripts\Core\StreamingAssetCopier.cs" />
     <Compile Include="Assets\Scripts\Creatures\Tiger.cs" />
+    <Compile Include="Assets\Scripts\DemoGame\Interactables\ItemContainer.cs" />
+    <Compile Include="Assets\Scripts\DemoGame\Interactables\rAddItem.cs" />
+    <Compile Include="Assets\Scripts\DemoGame\Interactables\rInitTrade.cs" />
+    <Compile Include="Assets\Scripts\DemoGame\Items\LockPick.cs" />
     <Compile Include="Assets\Scripts\DemoGame\Quest\QstWiseManGoogles.cs" />
     <Compile Include="Assets\Scripts\DemoGame\Quest\QuestGlobals.cs" />
     <Compile Include="Assets\Scripts\DemoGame\Quest\SceneBandit.cs" />
     <Compile Include="Assets\Scripts\DemoGame\Quest\SceneWiseMan.cs" />
+    <Compile Include="Assets\Scripts\DemoGame\WiseMansGoogles.cs" />
     <Compile Include="Assets\Scripts\DragMe.cs" />
     <Compile Include="Assets\Scripts\DragPanel.cs" />
     <Compile Include="Assets\Scripts\DropMe.cs" />
@@ -215,6 +217,7 @@
     <Compile Include="Assets\Scripts\UI\BasePanel.cs" />
     <Compile Include="Assets\Scripts\UI\ButtonList.cs" />
     <Compile Include="Assets\Scripts\UI\ButtonListBuilder.cs" />
+    <Compile Include="Assets\Scripts\UI\ButtonWithIcon.cs" />
     <Compile Include="Assets\Scripts\UI\ButtonWithSymbol.cs" />
     <Compile Include="Assets\Scripts\UI\Clock.cs" />
     <Compile Include="Assets\Scripts\UI\DialogBox.cs" />
@@ -229,70 +232,46 @@
     <Compile Include="Assets\Scripts\UI\UI_Questlog.cs" />
     <Compile Include="Assets\Scripts\UI\UI_SaveLoadPanel.cs" />
     <Compile Include="Assets\Scripts\UI\UI_Settings.cs" />
+    <Compile Include="Assets\Scripts\UI\UI_TradePanel.cs" />
     <Compile Include="Assets\Scripts\VN\DialogSceneData.cs" />
     <Compile Include="Assets\Scripts\VN\DialogTree.cs" />
     <Compile Include="Assets\Scripts\VN\DialogTreeBuilder.cs" />
-    <None Include="Assets\ProCore\ProGrids\Shader\pg_GridShader.shader" />
-    <None Include="Assets\ProCore\ProBuilder\Shader\pb_TransparentOverlay.shader" />
-    <None Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />
     <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_TextureAdd_Bumped.shader" />
     <None Include="Assets\_MK\MKToonFree\Shader\Inc\Outline\MKToonOutlineOnlyIO.cginc" />
-    <None Include="Assets\ProCore\ProBuilder\Shader\pb_SelectionPicker.shader" />
-    <None Include="Assets\ProCore\ProBuilder\About\changelog.txt" />
-    <None Include="Assets\ProCore\ProBuilder\Shader\DiffuseVertexColor.shader" />
-    <None Include="Assets\ProCore\ProBuilder\Shader\pb_FaceHighlight.shader" />
     <None Include="Assets\_MK\MKToonFree\Shader\MKToonFreeOutlineOnly.shader" />
     <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_TextureMult_Bumped.shader" />
     <None Include="Assets\_MK\MKToonFree\Shader\Inc\Outline\MKToonOutlineOnlySetup.cginc" />
     <None Include="Assets\_MK\MKToonFree\Shader\Inc\Common\MKToonInc.cginc" />
-    <None Include="Assets\ProCore\ProBuilder\Shader\pb_UnlitSolidColor.shader" />
     <None Include="Assets\_MK\MKToonFree\Shader\Inc\Outline\MKToonOutlineOnlyBase.cginc" />
-    <None Include="Assets\ProCore\ProGrids\About\pc_AboutEntry_ProGrids.txt" />
-    <None Include="Assets\ProCore\ProBuilder\Shader\pb_ReferenceUnlit.shader" />
     <None Include="Assets\Fonts\Jupiter\LICENSE.txt" />
     <None Include="Assets\_MK\MKToonFree\Shader\Inc\ShadowCaster\MKToonShadowCasterIO.cginc" />
-    <None Include="Assets\ProCore\ProBuilder\Shader\DiffuseTextureBlend.shader" />
-    <None Include="Assets\ProCore\ProBuilder\Shader\pb_StandardVertexColor.shader" />
-    <None Include="Assets\ProCore\ProBuilder\Shader\pb_VertexPicker.shader" />
-    <None Include="Assets\ProCore\ProBuilder\Shader\pb_HideVertices.shader" />
     <None Include="Assets\Textures and Sprites\SF UI\Background\LICENSE.txt" />
     <None Include="Assets\Models\Level Making Models\Tree\tropical_plant\readme.txt" />
     <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_Lit.shader" />
     <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_Plain_Bumped.shader" />
-    <None Include="Assets\ProCore\ProBuilder\About\ThirdPartyLicenses.txt" />
-    <None Include="Assets\ProCore\ProBuilder\Shader\pb_UnlitVertexColor.shader" />
-    <None Include="Assets\ProCore\ProBuilder\Shader\pb_FacePicker.shader" />
     <None Include="Assets\_MK\MKToonFree\Shader\Inc\Forward\MKToonForwardAddSetup.cginc" />
     <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_Plain_AdditiveZ.shader" />
     <None Include="Assets\JMO Assets\!JMO Assets Readme.txt" />
     <None Include="Assets\_MK\MKToonFree\Shader\Inc\Forward\MKToonForwardIO.cginc" />
     <None Include="Assets\_MK\MKToonFree\Shader\MKToonFreeMobile.shader" />
-    <None Include="Assets\ProCore\ProBuilder\About\Font\SIL Open Font License.txt" />
     <None Include="Assets\_MK\MKToonFree\Shader\Inc\Common\MKToonDef.cginc" />
     <None Include="Assets\Materials\UI-Default-No-Alpha.shader" />
     <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_Plain.shader" />
     <None Include="Assets\Fonts\OFL.txt" />
     <None Include="Assets\_MK\MKToonFree\Shader\Inc\Surface\MKToonSurfaceIO.cginc" />
     <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_Plain_Additive.shader" />
-    <None Include="Assets\ProCore\ProBuilder\About\pc_AboutEntry_ProBuilder.txt" />
     <None Include="Assets\_MK\MKToonFree\Shader\Inc\ShadowCaster\MKToonShadowCasterSetup.cginc" />
     <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_TextureMult.shader" />
-    <None Include="Assets\ProCore\ProBuilder\Shader\pb_VertexShader.shader" />
     <None Include="Assets\_MK\MKToonFree\Shader\Inc\Forward\MKToonForwardBaseSetup.cginc" />
     <None Include="Assets\_MK\MKToonFree\Shader\Inc\Common\MKToonLight.cginc" />
-    <None Include="Assets\ProCore\ProGrids\About\changelog.txt" />
-    <None Include="Assets\ProCore\ProBuilder\Shader\pb_NormalPreview.shader" />
     <None Include="Assets\Prefabs\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
     <None Include="Assets\_MK\MKToonFree\Shader\MKToonFree.shader" />
     <None Include="Assets\_MK\MKToonFree\Shader\Inc\Forward\MKToonForward.cginc" />
     <None Include="Assets\JMO Assets\MatCap Shaders\Shaders\MatCap_TextureAdd.shader" />
-    <None Include="Assets\ProCore\ProBuilder\Shader\pb_ScrollHighlight.shader" />
-    <None Include="Assets\ProCore\ProBuilder\readme.txt" />
     <None Include="Assets\AllAssets\readme.txt" />
     <None Include="Assets\_MK\MKToonFree\Shader\Inc\Common\MKToonV.cginc" />
     <None Include="Assets\JMO Assets\MatCap Shaders\Textures\MaCrea\MaCrea.txt" />
     <None Include="Assets\_MK\MKToonFree\Shader\Inc\Surface\MKToonSurface.cginc" />
-    <None Include="Assets\ProCore\ProBuilder\Shader\pb_SmoothingPreview.shader" />
     <None Include="Assets\JMO Assets\MatCap Shaders\Textures\BenSimonds\_Textures Readme.txt" />
     <None Include="Assets\_MK\MKToonFree\Shader\Inc\ShadowCaster\MKToonShadowCaster.cginc" />
     <None Include="Assets\JMO Assets\MatCap Shaders\_MatCap Shaders Readme.txt" />
@@ -511,21 +490,6 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>D:/Programs/unity2018/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
-    </Reference>
-    <Reference Include="ProBuilderCore-Unity5">
-      <HintPath>D:/Projects/Unity/CoCJnF/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
-    </Reference>
-    <Reference Include="ProBuilderMeshOps-Unity5">
-      <HintPath>D:/Projects/Unity/CoCJnF/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
-    </Reference>
-    <Reference Include="KdTreeLib">
-      <HintPath>D:/Projects/Unity/CoCJnF/Assets/ProCore/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
-    </Reference>
-    <Reference Include="pb_Stl">
-      <HintPath>D:/Projects/Unity/CoCJnF/Assets/ProCore/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
-    </Reference>
-    <Reference Include="Poly2Tri">
-      <HintPath>D:/Projects/Unity/CoCJnF/Assets/ProCore/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>D:/Projects/Unity/CoCJnF/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>

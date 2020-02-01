@@ -16,7 +16,7 @@ public class SceneWiseMan : DialogSceneData {
         DialogTree.Choice _Choice = new DialogTree.Choice();
         int _choice = dlg.GetDialogResult();
         if (_choice > 0) m_State = _choice;
-        else {
+        if(m_State==0) {
             QuestGlobals.getSingleton();    //Todo rebuild quest on Start/load
             int _GoogleQuestMile = QuestManager.getSingleton().GetQuestById((int)QuestGlobals.QuestEnum.QstWiseManGoogles).GetCurrMile().GetUId();
             if (_GoogleQuestMile >= (int)QstWiseManGoogles.MileEnum.HuntGoogleQuest1 && _GoogleQuestMile < (int)QstWiseManGoogles.MileEnum.HuntGoogleQuest2 )

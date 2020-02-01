@@ -53,7 +53,7 @@ public class DataController
     #region Constructor / Destructor
     private DataController()
     {
-
+        game = GameFactory.Create(1);
     }
 
     ~DataController()

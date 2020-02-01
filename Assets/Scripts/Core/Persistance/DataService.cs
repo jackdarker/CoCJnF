@@ -32,13 +32,12 @@ using UnityEngine.SceneManagement;
 
                 prefs = new PlayerPrefsHandler();
                 prefs.RestorePreferences();
-                currentlyLoadedProfileNumber = 0;
+                currentlyLoadedProfileNumber = -1;
                 SceneManager.sceneLoaded += OnSceneLoaded;
             }
         }
 
         void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-            Debug.Log("OnEnable called");
             OnLevelWasLoadedw();
         }
 
@@ -83,51 +82,80 @@ using UnityEngine.SceneManagement;
         /// </summary>
         public const int MAX_NUMBER_OF_PROFILES = 5;
 
-        /// <summary>
-        /// Loads the save data for a specific profile number. 
-        /// This will eventually be called from a button.
-        /// </summary>
-        /// <param name="profileNumber">(Optional) the profile number to load, 
-        /// omit to automatically load the first profile found.</param>
-        public void LoadSaveData(int profileNumber = 0) {
-            if (isDataLoaded && profileNumber == currentlyLoadedProfileNumber)
-                return;
+    /// <summary>
+    /// Writes the save data to file.
+    /// </summary>
+    public void WriteSaveData(int profileNumber = 0) {
+        if (profileNumber > 0) currentlyLoadedProfileNumber = profileNumber;
 
-            // Automatically load the first available profile.
-            if (profileNumber <= 0) {
-                //if no profile specified reload the actual profile (this is the case when the scene is changed)
-                if (currentlyLoadedProfileNumber <= 0) {
-                    //SaveDatas = ScriptableObject.CreateInstance(typeof(SaveData));
-                    SaveDatas.Reset();
-                } else {
-                    SaveDatas = SaveData.ReadFromFile(GetSaveDataFilePath(currentlyLoadedProfileNumber));
-                }
-            // We iterate through the possible profile numbers in case one with a lower number
-            // no longer exists.
-            //for (int i = 1; i <= MAX_NUMBER_OF_PROFILES; i++) {
-            //    if (File.Exists(GetSaveDataFilePath(i))) {
-            //        // Once the file is found, load it from the calculated file name.
-            //        SaveData = SaveData.ReadFromFile(GetSaveDataFilePath(i));
-            //        // And set the current profile number for later use when we save.
-            //        currentlyLoadedProfileNumber = i;
-            //        break;
-            //    }}
-             } else {
-                // If the profileNumber parameter is supplied then we'll look to see if that exists.
-                if (File.Exists(GetSaveDataFilePath(profileNumber))) {
-                    // If the file exists then load the SaveData from the calculated file name.
-                    SaveDatas = SaveData.ReadFromFile(GetSaveDataFilePath(profileNumber));
+        // If for some accidental reason we forgot to assign a profile number,
+        // then check to see if there is any unused profile number (i.e. a file doesn't exist for it). 
+        //if (currentlyLoadedProfileNumber <= 0) {
+        //    for (int i = 1; i <= MAX_NUMBER_OF_PROFILES; i++) {
+        //        if (!File.Exists(GetSaveDataFilePath(i))) {
+        //            currentlyLoadedProfileNumber = i;
+        //            break;
+        //        }
+        //    }
+        //}
 
-                } else {
-                    // Otherwise just return a new
-                    SaveDatas = ScriptableObject.CreateInstance<SaveData>();
-                    SaveDatas.Reset();
-                }
+        //// If we couldn't find an empty profile then throw an exception because something went very wrong.
+        //if (currentlyLoadedProfileNumber <= 0) {
+        //        throw new System.Exception("Cannot WriteSaveData. No available profiles and currentlyLoadedProfile = 0");
+        //    } else {
+        // Otherwise save the SaveData to file.
 
-                // And set the current profile number for later use when we save.
-                currentlyLoadedProfileNumber = profileNumber;
+        // If the save data doesn't exist yet, 
+        // then create a new default save data.
+        if (SaveDatas == null)
+            SaveDatas = ScriptableObject.CreateInstance<SaveData>();
+
+        // Finally save it to th file using the constructed path + file name
+        SaveDatas.WriteToFile(GetSaveDataFilePath(profileNumber));
+    }
+    /// <summary>
+    /// Loads the save data for a specific profile number. 
+    /// This will eventually be called from a button.
+    /// </summary>
+    /// <param name="profileNumber">0 is the temporary profile</param>
+    public void LoadSaveData(int profileNumber = 0) {
+        if (isDataLoaded && profileNumber == currentlyLoadedProfileNumber)
+            return;
+
+        // Automatically load the first available profile.
+        if (profileNumber <= 0) {
+            //if no profile specified reload the actual profile (this is the case when the scene is changed)
+            if (currentlyLoadedProfileNumber <= 0) {
+                SaveDatas = ScriptableObject.CreateInstance<SaveData>();
+                SaveDatas.Reset();
+            } else {
+                SaveDatas = SaveData.ReadFromFile(GetSaveDataFilePath(currentlyLoadedProfileNumber));
             }
-        }
+        // We iterate through the possible profile numbers in case one with a lower number
+        // no longer exists.
+        //for (int i = 1; i <= MAX_NUMBER_OF_PROFILES; i++) {
+        //    if (File.Exists(GetSaveDataFilePath(i))) {
+        //        // Once the file is found, load it from the calculated file name.
+        //        SaveData = SaveData.ReadFromFile(GetSaveDataFilePath(i));
+        //        // And set the current profile number for later use when we save.
+        //        currentlyLoadedProfileNumber = i;
+        //        break;
+        //    }}
+        } else {
+        // If the profileNumber parameter is supplied then we'll look to see if that exists.
+            if (File.Exists(GetSaveDataFilePath(profileNumber))) {
+                // If the file exists then load the SaveData from the calculated file name.
+                SaveDatas = SaveData.ReadFromFile(GetSaveDataFilePath(profileNumber));
+
+            } else {
+                // Otherwise just return a new
+                SaveDatas = ScriptableObject.CreateInstance<SaveData>();
+                SaveDatas.Reset();
+            }
+            WriteSaveData(0);   //copy values to temporary profile
+            currentlyLoadedProfileNumber = profileNumber;// And set the current profile number for later use when we save.
+    }
+    }
 
         /// <summary>
         /// The base name of our save data files.
@@ -150,11 +178,11 @@ using UnityEngine.SceneManagement;
         /// The full path and file name for our SaveData file.
         /// ex: 'c:\projectdirectory\assets\saves\savedata1.txt'
         /// </summary>
-        /// <param name="profileNumber">The number profile to load (must be greater than 0).</param>
+        /// <param name="profileNumber"></param>
         public string GetSaveDataFilePath(int profileNumber) {
             // If the profile number is less than 1 then throw an exception.
-            if (profileNumber < 1)
-                throw new System.ArgumentException("profileNumber must be greater than 1. Was: " + profileNumber);
+            //if (profileNumber < 1)
+            //    throw new System.ArgumentException("profileNumber must be greater than 1. Was: " + profileNumber);
 
             // Ensure that the directory exists.
             if (!Directory.Exists(SAVE_DATA_DIRECTORY))
@@ -175,36 +203,5 @@ using UnityEngine.SceneManagement;
 
     }
         
-        /// <summary>
-        /// Writes the save data to file.
-        /// </summary>
-        public void WriteSaveData(int profileNumber = 0) {
-        currentlyLoadedProfileNumber = profileNumber;
-
-        // If for some accidental reason we forgot to assign a profile number,
-        // then check to see if there is any unused profile number (i.e. a file doesn't exist for it). 
-        if (currentlyLoadedProfileNumber <= 0) {
-            for (int i = 1; i <= MAX_NUMBER_OF_PROFILES; i++) {
-                if (!File.Exists(GetSaveDataFilePath(i))) {
-                    currentlyLoadedProfileNumber = i;
-                    break;
-                }
-            }
-        }
-
-        // If we couldn't find an empty profile then throw an exception because something went very wrong.
-        if (currentlyLoadedProfileNumber <= 0) {
-                throw new System.Exception("Cannot WriteSaveData. No available profiles and currentlyLoadedProfile = 0");
-            } else {
-                // Otherwise save the SaveData to file.
-
-                // If the save data doesn't exist yet, 
-                // then create a new default save data.
-                if (SaveDatas == null)
-                    SaveDatas = ScriptableObject.CreateInstance<SaveData>();
-
-            // Finally save it to th file using the constructed path + file name
-            SaveDatas.WriteToFile(GetSaveDataFilePath(currentlyLoadedProfileNumber));
-            }
-        }
+        
     }

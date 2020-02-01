@@ -6,7 +6,7 @@ public static class PlayerFactory
 {
     public static Player Create() 
     {
-        var player = new Player();
+        var player = ScriptableObject.CreateInstance<Player>();
         return player;
     }
 }

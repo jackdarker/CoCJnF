@@ -13,7 +13,10 @@ public class nMileStoneActive : ICondition {
     }
     public string GetName(){
 			return Name;
-		}
+	}
+    public string GetText() {
+        return Name;    //Todo
+    }
     public bool Evaluate(){
         bool ret = false;
         Quest quest = QuestManager.getSingleton().GetQuestById(m_QuestId);

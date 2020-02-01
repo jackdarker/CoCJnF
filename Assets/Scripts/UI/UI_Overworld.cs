@@ -19,6 +19,7 @@ public class UI_Overworld : MonoBehaviour
     public UI_Questlog QuestLog;
     public UI_SaveLoadPanel SaveLoadPanel;
     public UI_Settings Settings;
+    public UI_TradePanel TradePanel;
 
     // Start is called before the first frame update
     void Start()
@@ -30,17 +31,24 @@ public class UI_Overworld : MonoBehaviour
     }
 
     private void UI_Overworld_QuestUpdated() {
-        Bt_QuestLog.GetComponentInChildren<Image>(true).sprite = Resources.Load<Sprite>(ResourcesManager.IconsPaths + "UI_Icon_Aim.png"); 
+        Bt_QuestLog.GetComponentInChildren<ButtonWithIcon>(true).SetIcon(
+            Resources.Load<Sprite>(ResourcesManager.IconsPaths + "UI_Icon_Aim")); 
     }
 
     protected void showQuestLog() {
         QuestLog.Display();
-        Bt_QuestLog.GetComponentInChildren<Image>(true).sprite = Resources.Load<Sprite>(ResourcesManager.IconsPaths + "UI_Icon_Menu.png");
+        Bt_QuestLog.GetComponentInChildren<ButtonWithIcon>(true).SetIcon(
+            Resources.Load<Sprite>(ResourcesManager.IconsPaths + "UI_Icon_Menu"));
     }
     protected void showSaveLoadPanel() {
         SaveLoadPanel.Display();
     }
     protected void showSettings() {
         Settings.Display();
+    }
+    public void showTradePanel(BaseActor A, BaseActor B) {
+        TradePanel.m_AActor = A;
+        TradePanel.m_BActor = B;
+        TradePanel.Display();
     }
 }

@@ -22,6 +22,7 @@ public class UI_Settings : BasePanel {
     protected void OnApply() {
         DataService.Instance.prefs.SetVolume(m_BGMVolume.value);
         DataService.Instance.prefs.SetMuted(m_MuteSound.isOn);
+        Hide();
     }
 
     public override void Display() {

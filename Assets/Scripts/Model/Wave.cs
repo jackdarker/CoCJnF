@@ -11,7 +11,7 @@ public class Wave //Todo holds the data of the current battle
     public Move move;
     public BaseActor m_Actor;
     public Wave() {
-        Players.Add(new BaseActor());
+        Players.Add(new BaseActor());  // Todo needs instantiate?
         Enemys.Add(new Tiger());
     }
     public bool IsPlayerDefeated() {

@@ -22,7 +22,7 @@ public class SceneController : MonoBehaviour
     //public string initialStartingPositionName = "DoorToMarket";
     // The name of the StartingPosition in the first scene to be loaded.
     //?? public SaveData playerSaveData;                 // Reference to the ScriptableObject which stores the name of the StartingPosition in the next scene.
-    DataController dataController;
+    //?? DataController dataController;
 
     private bool isFading;                          // Flag used to determine if the Image is currently fading to or from black.
 

@@ -319,24 +319,6 @@
     <Reference Include="JMOAssets_MatCapWelcome">
       <HintPath>D:/Projects/Unity/CoCJnF/Assets/JMO Assets/Editor/JMOAssets_MatCapWelcome.dll</HintPath>
     </Reference>
-    <Reference Include="ProBuilderCore-Unity5">
-      <HintPath>D:/Projects/Unity/CoCJnF/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
-    </Reference>
-    <Reference Include="ProBuilderMeshOps-Unity5">
-      <HintPath>D:/Projects/Unity/CoCJnF/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
-    </Reference>
-    <Reference Include="KdTreeLib">
-      <HintPath>D:/Projects/Unity/CoCJnF/Assets/ProCore/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
-    </Reference>
-    <Reference Include="pb_Stl">
-      <HintPath>D:/Projects/Unity/CoCJnF/Assets/ProCore/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
-    </Reference>
-    <Reference Include="Poly2Tri">
-      <HintPath>D:/Projects/Unity/CoCJnF/Assets/ProCore/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
-    </Reference>
-    <Reference Include="ProBuilderEditor-Unity5">
-      <HintPath>D:/Projects/Unity/CoCJnF/Assets/ProCore/ProBuilder/Editor/ProBuilderEditor-Unity5.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>D:/Projects/Unity/CoCJnF/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>

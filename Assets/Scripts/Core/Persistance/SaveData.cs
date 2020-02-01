@@ -94,7 +94,7 @@ public class SaveData : ResettableScriptableObject {
         Save("AppVersion", 100);    //Todo  the version of the game; use it for detecting load of old data-verson
         string json2 = JsonUtility.ToJson(intKeyValuePairLists, true);
         // Write that JSON string to the specified file.
-        File.WriteAllText(filePath, json+json2);
+        File.WriteAllText(filePath, json);
         
         // Tell us what we just wrote if DEBUG_ON is on.
         if (DEBUG_ON)

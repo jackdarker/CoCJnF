@@ -27,13 +27,15 @@ public class QuestManager
         }
         return null;
     }
-		//public Quest GetQuestByName(string name) {
-  //          if (m_Quests.ContainsKey(name)) {
-  //              return (m_Quests[name]);
-  //          }
-  //      return null;
-		//}
-
+    /// <summary>
+    /// 
+    /// </summary>
+    public void Tick() {
+        Dictionary<int, Quest>.Enumerator it =GetIterator();
+        while (it.MoveNext()) {
+            it.Current.Value.EvaluateCondition();
+        }
+    }
 	public void AddQuest(Quest value){
         value.QuestUpdated += QuestUpdated;
         m_Quests.Add(value.GetUId(), value);    //Todo update 

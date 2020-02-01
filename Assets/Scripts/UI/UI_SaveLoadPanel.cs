@@ -22,12 +22,14 @@ public class UI_SaveLoadPanel : BasePanel {
     public InfoBox m_Info;
     protected int m_Page = 0;
     protected bool m_LoadMode;
+    protected SceneController sceneController;
     // Start is called before the first frame update
     protected override void Start() {
         base.Start();
         m_Page = 0;
         m_SelButtons.OnBackClicked += OnCancle;
         m_BtMode.onClick.AddListener( OnMode);
+        sceneController = FindObjectOfType<SceneController>();
         SetMode(true);
     }
 
@@ -37,7 +39,8 @@ public class UI_SaveLoadPanel : BasePanel {
             // Load the save data file
             DataService.Instance.LoadSaveData(Slot);
             // Load the last level the player was in
-            SceneManager.LoadScene(DataService.Instance.SaveDatas.lastLevel);
+            sceneController.FadeAndLoadScene(DataService.Instance.SaveDatas.lastLevel);
+            //SceneManager.LoadScene(DataService.Instance.SaveDatas.lastLevel);
         } else {
             DataService.Instance.WriteSaveData(Slot);
         }
