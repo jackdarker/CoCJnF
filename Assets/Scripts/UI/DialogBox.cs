@@ -17,14 +17,10 @@ public class DialogBox : MonoBehaviour {
     public void Show() {
         m_Panel.gameObject.SetActive(true);
         m_Panel.enabled = true;
-        //for (int i =0; i< Bt.Length;i++) {
-        //    Bt[i].onClick.RemoveAllListeners();
-        //    int fixedi = i; //if we use i instead, all delegates will be called with the last value i was assigned by the loop !
-        //    Bt[i].onClick.AddListener(delegate { onClick(fixedi); });
-        //}
     }
     public void Display(DialogSceneData Data) {
         m_Data = Data;
+        Data.Setup();
         Display();
     }
     public void Display() {

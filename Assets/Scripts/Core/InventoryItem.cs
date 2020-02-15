@@ -50,7 +50,7 @@ public class InventoryItem
 	}
 	private string m_Description;
 		
-	public bool CanBeConsumed(BaseActor Target) {
+	public virtual bool CanBeConsumed(BaseActor Target) {
 		return false;
 	}
 	protected void OnConsumeChanged() {
@@ -63,14 +63,21 @@ public class InventoryItem
 		Target.ConsumeItem(item);
 		item.OnConsumeChanged();
 	}
-	public bool IsConsumeEffectActive() 
+    /// <summary>
+    /// QuestItems cannot be sold or dropped by player, only by the system.
+    /// </summary>
+    /// <returns></returns>
+    public virtual bool IsQuestItem() {
+        return false;
+    }
+    public bool IsConsumeEffectActive() 
 	{
 		return m_ConsumeEffectActive;
 	}
-	public bool CanBeUsedInFight() {
+	public virtual bool CanBeUsedInFight() {
 		return false;
 	}
-	public bool CanBeEquipped(BaseActor Target, int EquippLoc) {
+	public virtual bool CanBeEquipped(BaseActor Target, int EquippLoc) {
 		return false;
 	}
 	public void SetOwner(BaseActor Target) {
@@ -105,7 +112,7 @@ public class InventoryItem
 	public void Tick(int Time){
 		//remove consumed items from ConsumeInv??
 	}
-	public bool CanBeCombined(InventoryItem item) {
+	public virtual bool CanBeCombined(InventoryItem item) {
 		return false;
 	}
 	public InventoryItem Combine(InventoryItem item) {

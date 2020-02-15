@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>SceneSetup</title>
+</head>
+<body>
+    <p>A scene is created from components:
+    </p>
+    <ul>
+    <li>ScenePersistance (done automatical by calling loadAdditive from ScenePersistance) </li>
+    <li>UI prefab f.e. UI_Overworld</li>
+    <li>the level data: models, background images, tiles,...</li>
+    </ul>
+    <p>The starting scene of the game is ScenePersistance:
+    </p>
+    <ul>
+    <li>has a FadeToBlack-Image that is used when switching scenes</li>
+    <li>has a SceneController-Script that is used to swicth/load scenes</li>
+    <li>has a Dataservice-Script that is used to load/save SaveGame</li>
+    </ul>
+    <p>
+        Game-Scenes will be loaded additive and can therefore use the ScenePersistance components (SaveGame) to setup themself.</p>
+
+</body>
+</html>

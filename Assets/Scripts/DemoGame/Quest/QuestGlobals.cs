@@ -23,6 +23,7 @@ public class QuestGlobals
 
     public enum NpcEnum {
          WiseMan = 1,
-         BanditChief = 2
+         BanditChief = 2,
+         Trader = 3
     }
 }

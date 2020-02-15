@@ -9,6 +9,7 @@ public class SceneBandit : DialogSceneData {
     }
 
     public override void Setup() {
+        m_State = 0;
     }
 
     public override DialogTree GetDialog() {

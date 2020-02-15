@@ -20,6 +20,7 @@ public class UI_Overworld : MonoBehaviour
     public UI_SaveLoadPanel SaveLoadPanel;
     public UI_Settings Settings;
     public UI_TradePanel TradePanel;
+    public UI_InventoryPanel InventoryPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class UI_Overworld : MonoBehaviour
         Bt_QuestLog.onClick.AddListener(delegate { showQuestLog(); });
         Bt_SaveLoad.onClick.AddListener(delegate { showSaveLoadPanel(); });
         Bt_Settings.onClick.AddListener(delegate { showSettings(); });
+        Bt_Inventory.onClick.AddListener(delegate { showInventory(); });
     }
 
     private void UI_Overworld_QuestUpdated() {
@@ -45,6 +47,9 @@ public class UI_Overworld : MonoBehaviour
     }
     protected void showSettings() {
         Settings.Display();
+    }
+    protected void showInventory() {
+        InventoryPanel.Display(DataController.instance.game.CurrentPlayer);
     }
     public void showTradePanel(BaseActor A, BaseActor B) {
         TradePanel.m_AActor = A;

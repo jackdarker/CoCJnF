@@ -9,6 +9,7 @@ public class SceneWiseMan : DialogSceneData {
     }
 
     public override void Setup() {
+        m_State = 0;
     }
 
     public override DialogTree GetDialog() {
@@ -16,18 +17,19 @@ public class SceneWiseMan : DialogSceneData {
         DialogTree.Choice _Choice = new DialogTree.Choice();
         int _choice = dlg.GetDialogResult();
         if (_choice > 0) m_State = _choice;
-        if(m_State==0) {
+        if (m_State == 0) {
             QuestGlobals.getSingleton();    //Todo rebuild quest on Start/load
             int _GoogleQuestMile = QuestManager.getSingleton().GetQuestById((int)QuestGlobals.QuestEnum.QstWiseManGoogles).GetCurrMile().GetUId();
-            if (_GoogleQuestMile >= (int)QstWiseManGoogles.MileEnum.HuntGoogleQuest1 && _GoogleQuestMile < (int)QstWiseManGoogles.MileEnum.HuntGoogleQuest2 )
+            if (_GoogleQuestMile >= (int)QstWiseManGoogles.MileEnum.HuntGoogleQuest1 && _GoogleQuestMile < (int)QstWiseManGoogles.MileEnum.HuntGoogleQuest2) {
                 m_State = 10;
+            }
         }
         dlg.CreateDialogSetup();
         _Say.m_Who = "Wise Man";
-        switch(m_State) {
+        switch (m_State) {
             case 1:
                 _Say.m_What = "You ponder your option";
-                _Choice.m_Choice = new int[]{ 2,3};
+                _Choice.m_Choice = new int[] { 2, 3 };
                 _Choice.m_Text = new string[] { "Who are you?", "Are you blind?" };
                 dlg.AddElement(_Choice);
                 dlg.AddElement(_Say);
@@ -41,6 +43,7 @@ public class SceneWiseMan : DialogSceneData {
                 break;
             case 20:
                 _Say.m_What = "I cannot help you if you dont find them.";
+                dlg.AddElement(_Say);
                 dlg.SetDone();
                 break;
             case 2:
@@ -59,12 +62,14 @@ public class SceneWiseMan : DialogSceneData {
             case 4:
                 _Say.m_What = "You have got a quest.";
                 m_State = 1;
+                dlg.AddElement(_Say);
                 dlg.SetDone();
                 QuestManager.getSingleton().GetQuestById((int)QuestGlobals.QuestEnum.QstWiseManGoogles).ActivateMileByID(
                     (int)QstWiseManGoogles.MileEnum.HuntGoogleQuest1);
                 break;
             case 5:
                 _Say.m_What = "Maybe later. Lets talk about other things.";
+                dlg.AddElement(_Say);
                 m_State = 1;
                 break;
             default:
@@ -72,7 +77,7 @@ public class SceneWiseMan : DialogSceneData {
                 dlg.AddElement(_Say);
                 m_State = 1;
                 break;
-        } 
+        }
         return dlg;
     }
     private int m_State = 0;

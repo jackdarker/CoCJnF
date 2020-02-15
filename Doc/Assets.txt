@@ -1,0 +1,10 @@
+Tutorials and Games used as reference
+Unity-Adventure-Tutorial
+Pokemon Board Game
+https://gamedevacademy.org/how-to-create-an-rpg-game-in-unity-comprehensive-guide/
+https://github.com/Brackeys/RPG-Tutorial
+
+Other assets
+https://www.models-resource.com/wii/monsterhuntertri/model/4767/
+http://www.cadnav.com/3d-models/animal/index-14.html
+https://fertile-soil-productions.itch.io
