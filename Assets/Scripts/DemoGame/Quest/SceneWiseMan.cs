@@ -11,7 +11,9 @@ public class SceneWiseMan : DialogSceneData {
     public override void Setup() {
         m_State = 0;
     }
-
+    public override void SetDialogResult(int i) {
+        dlg.SetDialogResult(i);
+    }
     public override DialogTree GetDialog() {
         DialogTree.Say _Say = new DialogTree.Say();
         DialogTree.Choice _Choice = new DialogTree.Choice();
@@ -32,24 +34,20 @@ public class SceneWiseMan : DialogSceneData {
                 _Choice.m_Choice = new int[] { 2, 3 };
                 _Choice.m_Text = new string[] { "Who are you?", "Are you blind?" };
                 dlg.AddElement(_Choice);
-                dlg.AddElement(_Say);
                 break;
             case 10:
                 _Say.m_What = "Hello again. Did you find my googles?";
                 _Choice.m_Choice = new int[] { 20, 30 };
                 _Choice.m_Text = new string[] { "No", "Yes" };
                 dlg.AddElement(_Choice);
-                dlg.AddElement(_Say);
                 break;
             case 20:
                 _Say.m_What = "I cannot help you if you dont find them.";
-                dlg.AddElement(_Say);
                 dlg.SetDone();
                 break;
             case 2:
                 _Say.m_What = "Iam old and know stuff.";
                 m_State = 1;
-                dlg.AddElement(_Say);
                 break;
             case 3:
                 _Say.m_What = "I lost my googles. Please find them.";
@@ -57,27 +55,24 @@ public class SceneWiseMan : DialogSceneData {
                 _Choice.m_Choice = new int[] { 4, 5 };
                 _Choice.m_Text = new string[] { "Sure", "Nah" };
                 dlg.AddElement(_Choice);
-                dlg.AddElement(_Say);
                 break;
             case 4:
                 _Say.m_What = "You have got a quest.";
                 m_State = 1;
-                dlg.AddElement(_Say);
                 dlg.SetDone();
                 QuestManager.getSingleton().GetQuestById((int)QuestGlobals.QuestEnum.QstWiseManGoogles).ActivateMileByID(
                     (int)QstWiseManGoogles.MileEnum.HuntGoogleQuest1);
                 break;
             case 5:
                 _Say.m_What = "Maybe later. Lets talk about other things.";
-                dlg.AddElement(_Say);
                 m_State = 1;
                 break;
             default:
                 _Say.m_What = "Hello my friend. How may I help you?";
-                dlg.AddElement(_Say);
                 m_State = 1;
                 break;
         }
+        dlg.AddElement(_Say);
         return dlg;
     }
     private int m_State = 0;

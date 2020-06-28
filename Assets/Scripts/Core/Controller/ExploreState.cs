@@ -36,7 +36,7 @@ public class ExploreState : StateMachine.State {
         m_Owner.m_Info.Hide();
     }
     public override void OnSubmit() {
-        if (m_Owner.m_Mover.isPlayerSelected) {
+        if (false ){//TODO m_Owner.m_Mover.isPlayerSelected) {
             m_Owner.ChangeState(new SelectState(m_Owner));
         } else {
             m_Owner.m_Info.Show();
@@ -77,7 +77,7 @@ public class ExploreState : StateMachine.State {
     }
 
     public override void MoveRelative(Vector3 direction, Action didFinish) {
-        m_Owner.m_Mover.AttemptMove(direction); //Todo runs animation asynchron; wait until finished
+       // m_Owner.m_Mover.AttemptMove(direction); //Todo runs animation asynchron; wait until finished
     }
     /* protected virtual void OnMove(object sender, InfoEventArgs<Point> e)
      {

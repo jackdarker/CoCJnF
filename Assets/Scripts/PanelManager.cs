@@ -15,7 +15,7 @@ public class PanelManager : MonoBehaviour {
 	private GameObject m_PreviouslySelected;
     private SceneController m_SceneController;
 
-    const string k_SceneNewGame = "OverWorld2";
+    const string k_SceneNewGame = "Overworld";
 
     const string k_OpenTransitionName = "Open";
 	const string k_ClosedStateName = "Closed";
@@ -99,8 +99,12 @@ public class PanelManager : MonoBehaviour {
 	{
 		EventSystem.current.SetSelectedGameObject(go);
 	}
-    public void NewGame()
+    /// <summary>
+    /// helper since Scenecontroller only exist in persitence scene
+    /// </summary>
+    /// <param name="Scenename"></param>
+    public void SwitchScene(string Scenename)
     {
-        m_SceneController.FadeAndLoadScene(k_SceneNewGame);
+        m_SceneController.FadeAndLoadScene(Scenename);
     }
 }

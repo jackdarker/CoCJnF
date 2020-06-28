@@ -13,7 +13,9 @@ public class SceneTrader : DialogSceneData {
     public override void Setup() {
         m_State = 0;
     }
-
+    public override void SetDialogResult(int i) {
+        dlg.SetDialogResult(i);
+    }
     public override DialogTree GetDialog() {
         DialogTree.Say _Say = new DialogTree.Say();
         DialogTree.Choice _Choice = new DialogTree.Choice();
@@ -27,12 +29,10 @@ public class SceneTrader : DialogSceneData {
                 _Say.m_What = "Hello my friend. Do you want to trade?";
                 _Choice.m_Choice = new int[] { 20, 10 };
                 _Choice.m_Text = new string[] { "Yes", "No" };
-                dlg.AddElement(_Say);
                 dlg.AddElement(_Choice);
                 break;
             case 10:
                 _Say.m_What = "Good by then.";
-                dlg.AddElement(_Say);
                 m_State = 11;
                 break;
             case 11:
@@ -41,20 +41,18 @@ public class SceneTrader : DialogSceneData {
             case 20:
                 _Say.m_What = "Check out my wonderful wares...";
                 m_State = 30;
-                dlg.AddElement(_Say);
                 break;
             case 30:
                 _Say.m_What = "[TradePanel]";
-                dlg.AddElement(_Say);
                 dlg.SetDone();
                 ShowTradePanel();
                 break;
             default:
                 _Say.m_What = "Some suspicious looking persons are lurking other there?";
-                dlg.AddElement(_Say);
                 m_State = 0;
                 break;
-        } 
+        }
+        dlg.AddElement(_Say);
         return dlg;
     }
     private void ShowTradePanel() {

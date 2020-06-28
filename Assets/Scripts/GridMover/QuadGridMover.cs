@@ -188,6 +188,7 @@ public class QuadGridMover : MonoBehaviour,IGridMover
         _Path.Add(m_Map.GetNodeByPosition(from));
         _Path.Add(m_Map.GetNodeByPosition(to));
         Path = _Path;
+        if (_Path[0] == null || _Path[1] == null) _Return = false;
         return _Return;
     }
 }

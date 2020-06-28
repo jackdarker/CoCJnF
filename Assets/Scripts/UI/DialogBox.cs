@@ -72,7 +72,7 @@ public class DialogBox : MonoBehaviour {
         m_Panel.enabled = false;
     }
     public void onClick(int i) {
-        m_Data.GetDialog().SetDialogResult(i);
+        m_Data.SetDialogResult(i);
         //if (m_BtList[i].OnPressed != null) m_BtList[i].OnPressed(m_BtList[i]);
         Display();
     }

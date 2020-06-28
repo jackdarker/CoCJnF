@@ -51,6 +51,6 @@ public class SelectState : StateMachine.State {
         m_Owner.m_SelButtons.OnBackClicked -= OnCancle;
     }
     public override void MoveRelative(Vector3 direction, Action didFinish) {
-        m_Owner.m_Mover.AttemptMove(direction);
+        //m_Owner.m_Mover.AttemptMove(direction);
     }
 }

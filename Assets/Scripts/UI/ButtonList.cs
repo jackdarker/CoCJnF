@@ -69,8 +69,8 @@ public class ButtonList : MonoBehaviour {
                 Bt[i].gameObject.SetActive( false);
             }
         }
-        m_BtUp.enabled = (m_Page>0);
-        m_BtDown.enabled = (m_BtList.Count >= index);
+        if (m_BtUp != null) m_BtUp.enabled = (m_Page>0);
+        if (m_BtDown != null) m_BtDown.enabled = (m_BtList.Count >= index);
         Show();
     }
     public void Hide()

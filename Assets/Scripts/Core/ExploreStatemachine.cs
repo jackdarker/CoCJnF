@@ -9,7 +9,7 @@ public class ExploreStatemachine : StateMachine {
     public Clock m_Clock;
     public InfoBox m_Info;
     
-    public SelectGridMover m_Mover;
+   // public SelectGridMover m_Mover;
 
     void Start () {
         ChangeState(new ExploreState(this));
@@ -35,7 +35,7 @@ public class ExploreStatemachine : StateMachine {
             }
             //Check if we have a non-zero value for horizontal or vertical
             if (horizontal != 0 || vertical != 0) {
-                CurrentState.MoveRelative(new Vector3(horizontal, 0, vertical), null);
+    //Todo use onscreen buttons instead controller input??            CurrentState.MoveRelative(new Vector3(horizontal, 0, vertical), null);
 
             }
         }
